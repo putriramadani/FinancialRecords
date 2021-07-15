@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "491394855079",
+    "project_id": "financialrecords-e543a",
+    "storage_bucket": "financialrecords-e543a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491394855079:android:3ccc506f1602665b5e2b82",
+        "android_client_info": {
+          "package_name": "id.ac.polman.astra.kelompok2.financialrecords"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491394855079-rkp9l6sr1quod3b4sgnkg560i1ohvhj9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.ac.polman.astra.kelompok2.financialrecords",
+            "certificate_hash": "6cbaac0cea20e88b97a4af125359fcbe29aeb50d"
+          }
+        },
+        {
+          "client_id": "491394855079-fbkrh6t0rn3qs8cr04ofrl374oitnrnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQjwEUNkAtBEG_QBbH-YM7qvtvQPEEFwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "491394855079-fbkrh6t0rn3qs8cr04ofrl374oitnrnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
