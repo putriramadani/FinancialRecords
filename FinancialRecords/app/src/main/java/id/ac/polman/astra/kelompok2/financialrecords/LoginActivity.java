@@ -1,11 +1,17 @@
 package id.ac.polman.astra.kelompok2.financialrecords;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
+import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class LoginActivity extends AppCompatActivity {
@@ -34,6 +40,5 @@ public class LoginActivity extends AppCompatActivity {
         mTabLayout.setTranslationY(300);
         mTabLayout.setAlpha(v);
         mTabLayout.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
-
     }
 }
