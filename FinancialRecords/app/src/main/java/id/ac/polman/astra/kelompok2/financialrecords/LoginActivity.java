@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
 
+        //mTabLayout.setupWithViewPager(mViewPager);
+
         mTabLayout.setTranslationY(300);
         mTabLayout.setAlpha(v);
         mTabLayout.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
