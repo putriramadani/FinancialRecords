@@ -52,7 +52,7 @@ public class LoginTabFragment extends Fragment {
         mEmail = objectLTF.findViewById(R.id.email);
         mPass = objectLTF.findViewById(R.id.pass);
         mLogin = objectLTF.findViewById(R.id.button);
-        mForgetPass = objectLTF.findViewById(R.id.forget_pass);
+        //mForgetPass = objectLTF.findViewById(R.id.forget_pass);
 
 //        mEmail.setTranslationX(800);
 //        mPass.setTranslationX(800);
@@ -85,7 +85,7 @@ public class LoginTabFragment extends Fragment {
             mEmail = objectLTF.findViewById(R.id.email);
             mPass = objectLTF.findViewById(R.id.pass);
             mLogin = objectLTF.findViewById(R.id.login_button);
-            mForgetPass = objectLTF.findViewById(R.id.forget_pass);
+            //mForgetPass = objectLTF.findViewById(R.id.forget_pass);
 
             //mProgressBar = objectLTF.findViewById(R.id.loginPB);
             mLogin.setOnClickListener(new View.OnClickListener() {
