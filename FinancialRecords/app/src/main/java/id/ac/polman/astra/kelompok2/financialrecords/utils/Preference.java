@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 
 import id.ac.polman.astra.kelompok2.financialrecords.Entity.UserEntity;
 
@@ -31,5 +32,14 @@ public class Preference {
 
         mEditor.putString(USER_KEY, jsonUser);
         mEditor.commit();
+    }
+
+    public UserEntity getUser(){
+        String jsonUser = mSharedPreferences.getString(USER_KEY, "");
+
+        if (jsonUser.equals(""))
+            return mGson.fromJson(jsonUser, UserEntity.class);
+
+        return null;
     }
 }
