@@ -113,13 +113,14 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="#FF5722"
-        app:itemTextColor="#000000"
+        android:background="#ffc93b"
+        android:textAlignment="center"
+        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-
+        app:menu="@menu/bottom_nav_menu"
+        app:flow_horizontalAlign="center"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

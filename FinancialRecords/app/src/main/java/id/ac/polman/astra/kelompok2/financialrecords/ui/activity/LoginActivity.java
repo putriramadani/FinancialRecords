@@ -1,18 +1,13 @@
-package id.ac.polman.astra.kelompok2.financialrecords;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Patterns;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
+
+import id.ac.polman.astra.kelompok2.financialrecords.R;
 
 public class LoginActivity extends AppCompatActivity {
 

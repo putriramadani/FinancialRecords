@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.activity;
 
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -6,7 +6,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,6 +13,11 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.airbnb.lottie.LottieAnimationView;
+
+import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.OnBoardingFragment1;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.OnBoardingFragment2;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.OnBoardingFragment3;
+import id.ac.polman.astra.kelompok2.financialrecords.R;
 
 public class IntroductoryActivity extends AppCompatActivity {
 

@@ -1,6 +1,5 @@
-package id.ac.polman.astra.kelompok2.financialrecords;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,12 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,6 +21,9 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import id.ac.polman.astra.kelompok2.financialrecords.R;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.ProfileActivity;
 
 public class LoginTabFragment extends Fragment {
 

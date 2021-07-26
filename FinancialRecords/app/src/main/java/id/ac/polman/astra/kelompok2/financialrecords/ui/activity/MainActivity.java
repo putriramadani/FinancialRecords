@@ -1,8 +1,10 @@
-package id.ac.polman.astra.kelompok2.financialrecords;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import id.ac.polman.astra.kelompok2.financialrecords.R;
 
 public class MainActivity extends AppCompatActivity {
 

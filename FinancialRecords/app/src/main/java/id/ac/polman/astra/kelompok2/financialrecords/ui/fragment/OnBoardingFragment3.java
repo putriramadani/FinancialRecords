@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import id.ac.polman.astra.kelompok2.financialrecords.R;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.LoginActivity;
 
 public class OnBoardingFragment3 extends Fragment {
 

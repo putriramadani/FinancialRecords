@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FinancialRecords</string>
+    <string name="form_input">Form Input</string>
 </resources>

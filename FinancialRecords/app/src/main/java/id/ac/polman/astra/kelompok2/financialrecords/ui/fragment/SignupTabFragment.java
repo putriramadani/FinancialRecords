@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -12,7 +12,9 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import id.ac.polman.astra.kelompok2.financialrecords.R;
 import id.ac.polman.astra.kelompok2.financialrecords.model.SignUpModel;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.LoginActivity;
 
 public class SignupTabFragment extends Fragment {
 
