@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords.ui.activity;
+package id.ac.polman.astra.kelompok2.financialrecords;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -6,8 +6,6 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
-
-import id.ac.polman.astra.kelompok2.financialrecords.R;
 
 public class LoginActivity extends AppCompatActivity {
 

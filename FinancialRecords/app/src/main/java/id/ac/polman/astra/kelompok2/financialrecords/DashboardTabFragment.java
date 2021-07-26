@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
+package id.ac.polman.astra.kelompok2.financialrecords;
 
 import android.os.Bundle;
 

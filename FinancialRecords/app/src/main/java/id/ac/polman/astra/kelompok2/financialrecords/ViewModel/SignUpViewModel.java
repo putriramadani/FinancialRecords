@@ -1,10 +1,4 @@
-<<<<<<< HEAD:FinancialRecords/app/src/main/java/id/ac/polman/astra/kelompok2/financialrecords/ui/fragment/SignUpViewModel.java
-package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
-||||||| 66d6862:FinancialRecords/app/src/main/java/id/ac/polman/astra/kelompok2/financialrecords/SignUpViewModel.java
-package id.ac.polman.astra.kelompok2.financialrecords;
-=======
 package id.ac.polman.astra.kelompok2.financialrecords.ViewModel;
->>>>>>> main:FinancialRecords/app/src/main/java/id/ac/polman/astra/kelompok2/financialrecords/ViewModel/SignUpViewModel.java
 
 import android.app.Activity;
 import android.util.Log;
@@ -75,15 +69,15 @@ public class SignUpViewModel extends ViewModel {
 
                     db.collection("user").document(signUpModel.getEmail())
                             .set(user).addOnSuccessListener(doc -> {
-                                new Preference(activity).setUser(new UserEntity(
-                                        signUpModel.getEmail(),
-                                        signUpModel.getPassword(),
-                                        signUpModel.getNama(),
-                                        signUpModel.getAlamat(),
-                                        pemasukan,
-                                        pengeluaran,
-                                        0
-                                ));
+                        new Preference(activity).setUser(new UserEntity(
+                                signUpModel.getEmail(),
+                                signUpModel.getPassword(),
+                                signUpModel.getNama(),
+                                signUpModel.getAlamat(),
+                                pemasukan,
+                                pengeluaran,
+                                0
+                        ));
                         analytics.logUser(signUpModel.getEmail());
                         signUpLiveData.postValue(new ResponseModel(true, "Success"));
                     }).addOnFailureListener(e -> {

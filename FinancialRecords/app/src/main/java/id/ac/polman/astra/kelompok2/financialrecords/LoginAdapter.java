@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords.ui.activity;
+package id.ac.polman.astra.kelompok2.financialrecords;
 
 import android.content.Context;
 
@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.LoginTabFragment;
-import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.SignupTabFragment;
+import id.ac.polman.astra.kelompok2.financialrecords.LoginTabFragment;
+import id.ac.polman.astra.kelompok2.financialrecords.SignupTabFragment;
 
 public class LoginAdapter extends FragmentPagerAdapter {
 

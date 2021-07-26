@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords.ui.activity.kategori;
+package id.ac.polman.astra.kelompok2.financialrecords;
 
 import android.app.Activity;
 import android.app.Dialog;

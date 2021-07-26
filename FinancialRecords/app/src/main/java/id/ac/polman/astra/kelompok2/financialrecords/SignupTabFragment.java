@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
+package id.ac.polman.astra.kelompok2.financialrecords;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -13,14 +13,8 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
-<<<<<<< HEAD:FinancialRecords/app/src/main/java/id/ac/polman/astra/kelompok2/financialrecords/ui/fragment/SignupTabFragment.java
-import id.ac.polman.astra.kelompok2.financialrecords.R;
-||||||| 66d6862:FinancialRecords/app/src/main/java/id/ac/polman/astra/kelompok2/financialrecords/SignupTabFragment.java
-=======
 import id.ac.polman.astra.kelompok2.financialrecords.ViewModel.SignUpViewModel;
->>>>>>> main:FinancialRecords/app/src/main/java/id/ac/polman/astra/kelompok2/financialrecords/SignupTabFragment.java
 import id.ac.polman.astra.kelompok2.financialrecords.model.SignUpModel;
-import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.LoginActivity;
 
 public class SignupTabFragment extends Fragment {
 

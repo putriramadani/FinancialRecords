@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
+package id.ac.polman.astra.kelompok2.financialrecords;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,9 +22,6 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import id.ac.polman.astra.kelompok2.financialrecords.R;
-import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.ProfileActivity;
 
 public class LoginTabFragment extends Fragment {
 

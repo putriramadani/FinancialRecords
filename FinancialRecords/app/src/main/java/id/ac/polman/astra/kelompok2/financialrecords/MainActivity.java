@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords.ui.activity;
+package id.ac.polman.astra.kelompok2.financialrecords;
 
 import androidx.appcompat.app.AppCompatActivity;
 
