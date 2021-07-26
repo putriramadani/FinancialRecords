@@ -1,15 +1,17 @@
 package id.ac.polman.astra.kelompok2.financialrecords.Entity;
 
+import java.util.List;
+
 public class UserEntity {
     private String email;
     private String password;
     private String nama;
     private String alamat;
-    private String[] pemasukan;
-    private String[] pengeluaran;
+    private List<String> pemasukan;
+    private List<String> pengeluaran;
     private int saldo;
 
-    public UserEntity(String email, String password, String nama, String alamat, String[] pemasukan, String[] pengeluaran, int saldo) {
+    public UserEntity(String email, String password, String nama, String alamat, List<String> pemasukan, List<String> pengeluaran, int saldo) {
         this.email = email;
         this.password = password;
         this.nama = nama;
@@ -53,19 +55,19 @@ public class UserEntity {
         this.alamat = alamat;
     }
 
-    public String[] getPemasukan() {
+    public List<String> getPemasukan() {
         return pemasukan;
     }
 
-    public void setPemasukan(String[] pemasukan) {
+    public void setPemasukan(List<String> pemasukan) {
         this.pemasukan = pemasukan;
     }
 
-    public String[] getPengeluaran() {
+    public List<String> getPengeluaran() {
         return pengeluaran;
     }
 
-    public void setPengeluaran(String[] pengeluaran) {
+    public void setPengeluaran(List<String> pengeluaran) {
         this.pengeluaran = pengeluaran;
     }
 
