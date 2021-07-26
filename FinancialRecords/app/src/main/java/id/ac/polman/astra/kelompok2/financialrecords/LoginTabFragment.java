@@ -68,8 +68,6 @@ public class LoginTabFragment extends Fragment {
 //        mForgetPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
 //        mLogin.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
 
-
-
         return objectLTF;
     }
 
@@ -114,7 +112,7 @@ public class LoginTabFragment extends Fragment {
             //user is already loggedin
             //Log.e("Login", "!= null");
             //startActivity(new Intent(getActivity(), DashboardActivity.class));
-            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+            Intent intent = new Intent(getActivity(), HomeActivity.class);
             startActivity(intent);
             getActivity().finish();
         }
@@ -151,7 +149,7 @@ public class LoginTabFragment extends Fragment {
                         Toast.makeText(getContext(), "LoggedIn\n"+email, Toast.LENGTH_SHORT).show();
 
                         //open profile activity
-                        startActivity(new Intent(getActivity().getApplicationContext(), DashboardActivity.class));
+                        startActivity(new Intent(getActivity().getApplicationContext(), HomeActivity.class));
 
                         getActivity().finish();
                     }
