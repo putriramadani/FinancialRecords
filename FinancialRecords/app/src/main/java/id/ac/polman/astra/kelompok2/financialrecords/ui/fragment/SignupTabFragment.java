@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,12 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+<<<<<<< HEAD:FinancialRecords/app/src/main/java/id/ac/polman/astra/kelompok2/financialrecords/ui/fragment/SignupTabFragment.java
 import id.ac.polman.astra.kelompok2.financialrecords.R;
+||||||| 66d6862:FinancialRecords/app/src/main/java/id/ac/polman/astra/kelompok2/financialrecords/SignupTabFragment.java
+=======
+import id.ac.polman.astra.kelompok2.financialrecords.ViewModel.SignUpViewModel;
+>>>>>>> main:FinancialRecords/app/src/main/java/id/ac/polman/astra/kelompok2/financialrecords/SignupTabFragment.java
 import id.ac.polman.astra.kelompok2.financialrecords.model.SignUpModel;
 import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.LoginActivity;
 
@@ -58,6 +64,7 @@ public class SignupTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SignUpViewModel viewModel = new SignUpViewModel();
+                Log.e("running", "signup");
 
                 ProgressDialog progressDialog = new ProgressDialog(getActivity());
                 progressDialog.setTitle("Sign Up");

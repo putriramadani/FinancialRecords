@@ -3,6 +3,7 @@ package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,8 @@ public class LoginTabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //ViewGroup root = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
         objectLTF = inflater.inflate(R.layout.login_tab_fragment, container, false);
-
+        //Log.e("Login", "view");
+        attachToXML();
         mEmail = objectLTF.findViewById(R.id.email);
         mPass = objectLTF.findViewById(R.id.pass);
         mLogin = objectLTF.findViewById(R.id.button);
@@ -69,14 +71,14 @@ public class LoginTabFragment extends Fragment {
 //        mForgetPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
 //        mLogin.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
 
-        attachToXML();
+
 
         return objectLTF;
     }
 
     private void attachToXML(){
         try {
-
+            //Log.e("Login", "xml");
             //init firebase auth
             FirebaseApp.initializeApp(getContext());
             firebaseAuth = FirebaseAuth.getInstance();
@@ -88,10 +90,12 @@ public class LoginTabFragment extends Fragment {
             //mForgetPass = objectLTF.findViewById(R.id.forget_pass);
 
             //mProgressBar = objectLTF.findViewById(R.id.loginPB);
+            //Log.e("Login", "xml2");
             mLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //validate data
+                    //Log.e("Login", "button");
                     validateData();
                     //mProgressBar.setVisibility(View.VISIBLE);
                 }
@@ -105,18 +109,22 @@ public class LoginTabFragment extends Fragment {
     private void checkUser() {
         //check if user is already loggedin
         //if already logged in then open profile activity
-
+        //Log.e("Login", "checkUser");
         //get current user
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        //Log.e("Login", firebaseUser.getEmail());
         if (firebaseUser != null){
             //user is already loggedin
-            startActivity(new Intent(getActivity().getApplicationContext(), ProfileActivity.class));
+            //Log.e("Login", "!= null");
+            //startActivity(new Intent(getActivity(), DashboardActivity.class));
+            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+            startActivity(intent);
             getActivity().finish();
         }
     }
 
     private void validateData(){
-
+        //Log.e("Login", "validateData");
         //validate data
         if (!Patterns.EMAIL_ADDRESS.matcher(mEmail.getText().toString()).matches()){
             //email format is invalid, dont proceed further
@@ -133,19 +141,20 @@ public class LoginTabFragment extends Fragment {
     }
 
     private void firebaseLogin() {
-
+        //Log.e("Login", "firebaseLogin");
         firebaseAuth.signInWithEmailAndPassword(mEmail.getText().toString(), mPass.getText().toString())
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         //login success
                         //getuserinfo
+                        Log.e("Login", "sukses");
                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                         String email = firebaseUser.getEmail();
                         Toast.makeText(getContext(), "LoggedIn\n"+email, Toast.LENGTH_SHORT).show();
 
                         //open profile activity
-                        startActivity(new Intent(getActivity().getApplicationContext(), ProfileActivity.class));
+                        startActivity(new Intent(getActivity().getApplicationContext(), DashboardActivity.class));
 
                         getActivity().finish();
                     }

@@ -1,27 +1,23 @@
-package id.ac.polman.astra.kelompok2.financialrecords.Entity;
+package id.ac.polman.astra.kelompok2.financialrecords.model;
 
 import java.util.List;
 
-public class UserEntity {
+public class AccountModel {
     private String email;
-    private String password;
     private String nama;
-    private String alamat;
     private List<String> pemasukan;
     private List<String> pengeluaran;
     private int saldo;
 
-    public UserEntity(String email, String password, String nama, String alamat, List<String> pemasukan, List<String> pengeluaran, int saldo) {
+    public AccountModel(String email, String nama, List<String> pemasukan, List<String> pengeluaran, int saldo) {
         this.email = email;
-        this.password = password;
         this.nama = nama;
-        this.alamat = alamat;
         this.pemasukan = pemasukan;
         this.pengeluaran = pengeluaran;
         this.saldo = saldo;
     }
 
-    public UserEntity(){};
+    public AccountModel() {}
 
     public String getEmail() {
         return email;
@@ -31,28 +27,12 @@ public class UserEntity {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getNama() {
         return nama;
     }
 
     public void setNama(String nama) {
         this.nama = nama;
-    }
-
-    public String getAlamat() {
-        return alamat;
-    }
-
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
     }
 
     public List<String> getPemasukan() {

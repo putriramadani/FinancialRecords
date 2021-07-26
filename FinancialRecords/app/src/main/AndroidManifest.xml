@@ -13,11 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinancialRecords">
+<<<<<<< HEAD
         <activity android:name=".ui.activity.LoginActivity"></activity>
         <activity android:name=".ui.activity.ProfileActivity"/>
         <activity android:name=".ui.activity.kategori.KategoriActivity"/>
         <activity android:name=".ui.fragment.DashboardTabFragment"/>
         <activity android:name=".ui.activity.IntroductoryActivity">
+||||||| 66d6862
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".IntroductoryActivity">
+=======
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".IntroductoryActivity">
+>>>>>>> main
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
