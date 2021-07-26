@@ -1,6 +1,7 @@
 package id.ac.polman.astra.kelompok2.financialrecords;
 
 import android.app.Activity;
+import android.util.Log;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
@@ -9,7 +10,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import id.ac.polman.astra.kelompok2.financialrecords.Entity.UserEntity;
@@ -44,16 +47,22 @@ public class SignUpViewModel extends ViewModel {
         else if (!signUpModel.getRePassword().equals(signUpModel.getPassword()))
             signUpLiveData.postValue(new ResponseModel(false, "Password and Re Password is different"));
         else {
+            Log.e("Running", "running");
             FirebaseAuthHelper.signUp(activity, signUpModel.getEmail(), signUpModel.getPassword()).observe((LifecycleOwner) activity, responseModel -> {
+                Log.e(TAG, "signUp: "+ "response" );
                 if (responseModel.isSuccess()) {
+                    Log.e(TAG, "signUp: "+ "success" );
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                     Map<String, Object> user = new HashMap<>();
                     user.put("email", signUpModel.getEmail());
                     user.put("nama", signUpModel.getNama());
                     user.put("alamat", signUpModel.getAlamat());
-                    String[] pemasukan = {"gaji"};
-                    String[] pengeluaran = {"makan", "transportasi"};
+                    List<String> pemasukan = new ArrayList<>();
+                    pemasukan.add("gaji");
+                    List<String> pengeluaran = new ArrayList<>();
+                    pengeluaran.add("Makan");
+                    pengeluaran.add("Transportasi");
                     user.put("pemasukan", pemasukan);
                     user.put("pengeluaran", pengeluaran);
                     user.put("saldo", 0);
