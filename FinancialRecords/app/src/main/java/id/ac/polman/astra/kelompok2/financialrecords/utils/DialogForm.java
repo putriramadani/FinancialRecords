@@ -32,12 +32,12 @@ public class DialogForm extends DialogFragment {
         this.namakategori = namakategori;
     }
 
-    public DialogForm(){
-
-    }
-
     TextView et_nama;
     Button btn_simpan;
+
+    public DialogForm() {
+
+    }
 
     @Nullable
     @Override
@@ -47,6 +47,7 @@ public class DialogForm extends DialogFragment {
         et_nama = view.findViewById(R.id.et_nama);
         et_nama.setText(namakategori);
 
+        btn_simpan = view.findViewById(R.id.btn_simpan);
         btn_simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +66,7 @@ public class DialogForm extends DialogFragment {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(view.getContext(), "Data tersimpan", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(view.getContext(), "Data gagal tersimpan", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
