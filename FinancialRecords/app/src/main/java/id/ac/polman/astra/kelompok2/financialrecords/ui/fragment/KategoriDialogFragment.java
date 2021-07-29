@@ -1,45 +1,28 @@
-package id.ac.polman.astra.kelompok2.financialrecords.utils;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Arrays;
-import java.util.List;
-
-import id.ac.polman.astra.kelompok2.financialrecords.LoginActivity;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.LoginActivity;
 import id.ac.polman.astra.kelompok2.financialrecords.R;
 import id.ac.polman.astra.kelompok2.financialrecords.ViewModel.KategoriViewModel;
-import id.ac.polman.astra.kelompok2.financialrecords.ViewModel.SignUpViewModel;
 import id.ac.polman.astra.kelompok2.financialrecords.model.KategoriModel;
-import id.ac.polman.astra.kelompok2.financialrecords.model.SignUpModel;
 
-public class DialogForm extends DialogFragment {
+public class KategoriDialogFragment extends DialogFragment {
 
-    public DialogForm() {
+    public KategoriDialogFragment() {
 
     }
 

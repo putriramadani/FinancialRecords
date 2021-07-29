@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.DashboardListFragment;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.DashboardTabFragment;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.KategoriTabFragment;
+import id.ac.polman.astra.kelompok2.financialrecords.R;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.SignupTabFragment;
 
 public class HomeActivity extends AppCompatActivity {
 

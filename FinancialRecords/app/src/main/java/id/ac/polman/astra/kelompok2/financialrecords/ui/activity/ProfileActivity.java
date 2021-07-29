@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import id.ac.polman.astra.kelompok2.financialrecords.R;
 
 public class ProfileActivity extends AppCompatActivity {
 

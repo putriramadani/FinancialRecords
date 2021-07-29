@@ -1,38 +1,42 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
-android:id="@+id/cvMain"
+android:id="@+id/cv_kategori"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:layout_margin="10dp"
 app:cardCornerRadius="15dp"
-app:cardElevation="10dp">
+app:cardElevation="10dp"
+android:backgroundTint="@color/orange"
+android:orientation="vertical">
 
 <LinearLayout
+    android:paddingStart="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:paddingEnd="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_marginStart="10dp"
+    android:background="@color/white">
 
     <TextView
-        android:id="@+id/nama_barang"
+        android:id="@+id/nama_kategori"
+        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textStyle="bold" />
+        android:textColor="@android:color/holo_orange_dark"
+        android:textStyle="bold"
+        android:text="Kategori"/>
 
     <TextView
-        android:id="@+id/merk_barang"
+        android:id="@+id/jenis_kategori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/harga_barang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textStyle="bold" />
+        android:textColor="@android:color/holo_orange_dark"
+        android:textStyle="bold"
+        android:padding="5dp"
+        android:text="Jenis Kategori"/>
 
 </LinearLayout>
 
