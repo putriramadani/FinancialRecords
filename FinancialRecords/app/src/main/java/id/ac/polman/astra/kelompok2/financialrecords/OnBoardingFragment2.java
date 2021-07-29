@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import id.ac.polman.astra.kelompok2.financialrecords.R;
+
 public class OnBoardingFragment2 extends Fragment {
 
     @Override

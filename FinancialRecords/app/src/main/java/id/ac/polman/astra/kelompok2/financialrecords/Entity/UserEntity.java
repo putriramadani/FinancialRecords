@@ -21,7 +21,10 @@ public class UserEntity {
         this.saldo = saldo;
     }
 
-    public UserEntity(){};
+    public UserEntity(List<String> pemasukan, List<String> pengeluaran) {
+        this.pemasukan = pemasukan;
+        this.pengeluaran = pengeluaran;
+    }
 
     public String getEmail() {
         return email;

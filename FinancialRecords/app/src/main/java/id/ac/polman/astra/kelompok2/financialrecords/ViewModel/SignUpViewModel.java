@@ -69,15 +69,15 @@ public class SignUpViewModel extends ViewModel {
 
                     db.collection("user").document(signUpModel.getEmail())
                             .set(user).addOnSuccessListener(doc -> {
-                                new Preference(activity).setUser(new UserEntity(
-                                        signUpModel.getEmail(),
-                                        signUpModel.getPassword(),
-                                        signUpModel.getNama(),
-                                        signUpModel.getAlamat(),
-                                        pemasukan,
-                                        pengeluaran,
-                                        0
-                                ));
+                        new Preference(activity).setUser(new UserEntity(
+                                signUpModel.getEmail(),
+                                signUpModel.getPassword(),
+                                signUpModel.getNama(),
+                                signUpModel.getAlamat(),
+                                pemasukan,
+                                pengeluaran,
+                                0
+                        ));
                         analytics.logUser(signUpModel.getEmail());
                         signUpLiveData.postValue(new ResponseModel(true, "Success"));
                     }).addOnFailureListener(e -> {

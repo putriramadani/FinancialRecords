@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import id.ac.polman.astra.kelompok2.financialrecords.LoginTabFragment;
+import id.ac.polman.astra.kelompok2.financialrecords.SignupTabFragment;
+
 public class LoginAdapter extends FragmentPagerAdapter {
 
     private Context mContext;

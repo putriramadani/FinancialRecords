@@ -1,6 +1,5 @@
 package id.ac.polman.astra.kelompok2.financialrecords;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,12 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -54,7 +51,7 @@ public class LoginTabFragment extends Fragment {
         mEmail = objectLTF.findViewById(R.id.email);
         mPass = objectLTF.findViewById(R.id.pass);
         mLogin = objectLTF.findViewById(R.id.button);
-        mForgetPass = objectLTF.findViewById(R.id.forget_pass);
+        //mForgetPass = objectLTF.findViewById(R.id.forget_pass);
 
 //        mEmail.setTranslationX(800);
 //        mPass.setTranslationX(800);
@@ -71,8 +68,6 @@ public class LoginTabFragment extends Fragment {
 //        mForgetPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
 //        mLogin.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
 
-
-
         return objectLTF;
     }
 
@@ -87,7 +82,7 @@ public class LoginTabFragment extends Fragment {
             mEmail = objectLTF.findViewById(R.id.email);
             mPass = objectLTF.findViewById(R.id.pass);
             mLogin = objectLTF.findViewById(R.id.login_button);
-            mForgetPass = objectLTF.findViewById(R.id.forget_pass);
+            //mForgetPass = objectLTF.findViewById(R.id.forget_pass);
 
             //mProgressBar = objectLTF.findViewById(R.id.loginPB);
             //Log.e("Login", "xml2");
@@ -117,7 +112,7 @@ public class LoginTabFragment extends Fragment {
             //user is already loggedin
             //Log.e("Login", "!= null");
             //startActivity(new Intent(getActivity(), DashboardActivity.class));
-            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+            Intent intent = new Intent(getActivity(), HomeActivity.class);
             startActivity(intent);
             getActivity().finish();
         }
@@ -154,7 +149,7 @@ public class LoginTabFragment extends Fragment {
                         Toast.makeText(getContext(), "LoggedIn\n"+email, Toast.LENGTH_SHORT).show();
 
                         //open profile activity
-                        startActivity(new Intent(getActivity().getApplicationContext(), DashboardActivity.class));
+                        startActivity(new Intent(getActivity().getApplicationContext(), HomeActivity.class));
 
                         getActivity().finish();
                     }

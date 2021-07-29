@@ -35,23 +35,23 @@ public class SignupTabFragment extends Fragment {
         mRepass = objectLTF.findViewById(R.id.signup_repass);
         mSignUp = objectLTF.findViewById(R.id.button);
 
-        mEmail.setTranslationX(800);
-        mPass.setTranslationX(800);
-        mName.setTranslationX(800);
-        mAddress.setTranslationX(800);
-        mSignUp.setTranslationX(800);
-
-        mEmail.setAlpha(v);
-        mPass.setAlpha(v);
-        mName.setAlpha(v);
-        mAddress.setAlpha(v);
-        mSignUp.setAlpha(v);
-
-        mEmail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        mPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        mName.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        mAddress.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        mSignUp.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
+//        mEmail.setTranslationX(800);
+//        mPass.setTranslationX(800);
+//        mName.setTranslationX(800);
+//        mAddress.setTranslationX(800);
+//        mSignUp.setTranslationX(800);
+//
+//        mEmail.setAlpha(v);
+//        mPass.setAlpha(v);
+//        mName.setAlpha(v);
+//        mAddress.setAlpha(v);
+//        mSignUp.setAlpha(v);
+//
+//        mEmail.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
+//        mPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
+//        mName.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
+//        mAddress.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
+//        mSignUp.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
 
 
         mSignUp.setOnClickListener(new View.OnClickListener() {

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/kategori"
-        android:title="Kategori" />
+        android:id="@+id/nav_dashboard"
+        android:title="Beranda"
+        android:icon="@drawable/ic_baseline_home_24"/>
     <item
-        android:id="@+id/beranda"
-        android:title="Beranda" />
+        android:id="@+id/nav_kategori"
+        android:title="Kategori"
+        android:icon="@drawable/ic_baseline_category_24"/>
     <item
-        android:id="@+id/laporan"
-        android:title="Laporan" />
+        android:id="@+id/nav_laporan"
+        android:title="Laporan"
+        android:icon="@drawable/ic_baseline_sticky_note_2_24"/>
 </menu>

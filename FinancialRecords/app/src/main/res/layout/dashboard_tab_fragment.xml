@@ -17,32 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="145dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".27"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="112dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/inverse_logo"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias=".3" />
-
     <FrameLayout
         android:layout_width="190dp"
         android:layout_height="72dp"
@@ -60,6 +34,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="7dp"
             android:text="Pemasukan"
+            android:textColor="@color/orange"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +47,8 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
             android:gravity="bottom"
-            android:text="Rp.100,000" />
+            android:text="Rp.100,000"
+            android:textColor="@color/orange" />
 
     </FrameLayout>
 
@@ -93,6 +69,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="7dp"
             android:text="Pengeluaran"
+            android:textColor="@color/orange"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,32 +82,9 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
             android:gravity="bottom"
+            android:textColor="@color/orange"
             android:text="Rp.100,000" />
 
     </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="449dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7"></FrameLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="#FF5722"
-        app:itemTextColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

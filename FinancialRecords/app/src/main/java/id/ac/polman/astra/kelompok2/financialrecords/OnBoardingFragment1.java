@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import id.ac.polman.astra.kelompok2.financialrecords.R;
+
 public class OnBoardingFragment1 extends Fragment {
 
     @Override
