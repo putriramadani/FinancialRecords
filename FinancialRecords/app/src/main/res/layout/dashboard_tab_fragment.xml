@@ -34,6 +34,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="7dp"
             android:text="Pemasukan"
+            android:textColor="@color/orange"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +47,8 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
             android:gravity="bottom"
-            android:text="Rp.100,000" />
+            android:text="Rp.100,000"
+            android:textColor="@color/orange" />
 
     </FrameLayout>
 
@@ -67,6 +69,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="7dp"
             android:text="Pengeluaran"
+            android:textColor="@color/orange"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +82,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
             android:gravity="bottom"
+            android:textColor="@color/orange"
             android:text="Rp.100,000" />
 
     </FrameLayout>

@@ -1,13 +1,20 @@
 package id.ac.polman.astra.kelompok2.financialrecords.utils;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,72 +27,69 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Arrays;
+import java.util.List;
+
+import id.ac.polman.astra.kelompok2.financialrecords.LoginActivity;
 import id.ac.polman.astra.kelompok2.financialrecords.R;
+import id.ac.polman.astra.kelompok2.financialrecords.ViewModel.KategoriViewModel;
+import id.ac.polman.astra.kelompok2.financialrecords.ViewModel.SignUpViewModel;
 import id.ac.polman.astra.kelompok2.financialrecords.model.KategoriModel;
+import id.ac.polman.astra.kelompok2.financialrecords.model.SignUpModel;
 
 public class DialogForm extends DialogFragment {
-
-    String namakategori;
-    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-
-    public DialogForm(String namakategori) {
-        this.namakategori = namakategori;
-    }
-
-    TextView et_nama;
-    Button btn_simpan;
 
     public DialogForm() {
 
     }
 
-    @Nullable
+    EditText mNama;
+    Button mAddButton;
+    private View objectLTF;
+
+    Spinner spinner;
+    ArrayAdapter<CharSequence> adapter;
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.form_kategori, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        objectLTF = inflater.inflate(R.layout.form_kategori, container, false);
 
-        et_nama = view.findViewById(R.id.et_nama);
-        et_nama.setText(namakategori);
+        mNama= objectLTF.findViewById(R.id.et_nama);
+        mAddButton = objectLTF.findViewById(R.id.btn_simpan);
 
-        btn_simpan = view.findViewById(R.id.btn_simpan);
-        btn_simpan.setOnClickListener(new View.OnClickListener() {
+        mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String namakategori = et_nama.getText().toString();
+                KategoriViewModel viewModel = new KategoriViewModel();
+                Log.e("running", "Add Category");
 
-                if(TextUtils.isEmpty(namakategori)){
-                    input((EditText) et_nama, "Nama");
-                }
-                else
-                {
-                    database.child("Data").push().setValue(new KategoriModel(namakategori)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(view.getContext(), "Data tersimpan", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(view.getContext(), "Data gagal tersimpan", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+                ProgressDialog progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setTitle("Add Category");
+                progressDialog.setMessage("Please Wait");
+                progressDialog.show();
+
+                mNama= objectLTF.findViewById(R.id.et_nama);
+                mAddButton = objectLTF.findViewById(R.id.btn_simpan);
+                spinner = objectLTF.findViewById(R.id.spinner);
+
+                KategoriModel kategoriModel = new KategoriModel(mNama.getText().toString(), spinner.getSelectedItem().toString());
+
+                viewModel.signUp(getActivity(), kategoriModel).observe(getActivity(), responseModel -> {
+                    progressDialog.dismiss();
+
+                    if (responseModel.isSuccess())
+                        startActivity(new Intent(getActivity().getApplicationContext(), LoginActivity.class));
+                    else
+                        new AlertDialog
+                                .Builder(getActivity())
+                                .setTitle("Failed")
+                                .setMessage(responseModel.getMessage())
+                                .show();
+                });
             }
         });
 
-        return view;
+        return  objectLTF;
     }
 
-    public void onStart(){
-        super.onStart();
-        Dialog dialog = getDialog();
-        if (dialog != null) {
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        }
-    }
-
-    private void input (EditText txt, String s){
-        txt.setError(s+"tidak boleh kosong");
-        txt.requestFocus();
-    }
 }

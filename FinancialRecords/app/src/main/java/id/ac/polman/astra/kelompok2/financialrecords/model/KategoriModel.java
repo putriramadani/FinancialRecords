@@ -1,5 +1,7 @@
 package id.ac.polman.astra.kelompok2.financialrecords.model;
 
+import java.util.List;
+
 public class KategoriModel {
 
     private String namakategori;
@@ -9,8 +11,9 @@ public class KategoriModel {
 
     }
 
-    public KategoriModel(String namakategori){
+    public KategoriModel(String namakategori, String key){
         this.namakategori = namakategori;
+        this.key = key;
     }
 
     public String getNamakategori() {
