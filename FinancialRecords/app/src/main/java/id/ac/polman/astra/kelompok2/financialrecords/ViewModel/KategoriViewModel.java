@@ -57,7 +57,7 @@ public class KategoriViewModel extends ViewModel {
                            Map<String, Object> user = new HashMap<>();
 
                            String pem = signUpModel.getNamakategori();
-                           String jenis = signUpModel.getKey();
+                           String jenis = signUpModel.getJenis();
                            Log.e(TAG, "JENISSSSS: "+ jenis + "nama: "+ pem );
 
                            List<String> pemasukan = new ArrayList<>();
