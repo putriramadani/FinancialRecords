@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,10 +14,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.FirebaseApp;
-
 import java.util.List;
 
+import id.ac.polman.astra.kelompok2.financialrecords.R;
 import id.ac.polman.astra.kelompok2.financialrecords.ViewModel.DashboardListViewModel;
 import id.ac.polman.astra.kelompok2.financialrecords.model.DashboardModel;
 

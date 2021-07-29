@@ -1,4 +1,4 @@
-package id.ac.polman.astra.kelompok2.financialrecords;
+package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import id.ac.polman.astra.kelompok2.financialrecords.utils.DialogForm;
+import id.ac.polman.astra.kelompok2.financialrecords.R;
 
 public class KategoriTabFragment extends Fragment {
     private View objectKTF;
@@ -24,7 +24,7 @@ public class KategoriTabFragment extends Fragment {
         fab_tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogForm dialogForm = new DialogForm();
+                KategoriDialogFragment dialogForm = new KategoriDialogFragment();
                 dialogForm.show(getFragmentManager(), "form");
             }
         });
