@@ -43,7 +43,7 @@
             android:layout_margin="5dp"
             android:background="@color/orange"
             android:entries="@array/Spinner_items"
-            android:textColor="@color/orange"
+            android:textColor="@color/white"
             android:layout_marginBottom="10dp"
             android:textSize="16sp"></Spinner>
 

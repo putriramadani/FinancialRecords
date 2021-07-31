@@ -1,6 +1,7 @@
 package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,11 +31,16 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import id.ac.polman.astra.kelompok2.financialrecords.Entity.UserEntity;
 import id.ac.polman.astra.kelompok2.financialrecords.R;
 import id.ac.polman.astra.kelompok2.financialrecords.adapter.RecyclerAdapter;
 import id.ac.polman.astra.kelompok2.financialrecords.model.KategoriModel;
+import id.ac.polman.astra.kelompok2.financialrecords.model.ResponseModel;
+import id.ac.polman.astra.kelompok2.financialrecords.utils.Preference;
 
 public class KategoriTabFragment extends Fragment {
     private View objectKTF;
@@ -63,7 +69,7 @@ public class KategoriTabFragment extends Fragment {
         fab_tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                KategoriDialogFragment dialogForm = new KategoriDialogFragment();
+                KategoriDialogFragment dialogForm = new KategoriDialogFragment("","", 0,"Tambah");
                 dialogForm.show(getFragmentManager(), "form");
             }
         });
@@ -87,17 +93,21 @@ public class KategoriTabFragment extends Fragment {
                         List<String> listpen = (List<String>) doc.get("pengeluaran");
                         for(int i=0;i<listpem.size();i++) {
                             KategoriModel kList = new KategoriModel(
-                                    listpem.get(i)
+                                    listpem.get(i),
+                                    i
                             );
                             kList.setJenis("Pemasukan");
                             listKategori.add(kList);
+                            kList.setKey(i);
                         }
                         for(int i=0;i<listpen.size();i++) {
                             KategoriModel kList = new KategoriModel(
-                                    listpen.get(i)
+                                    listpen.get(i),
+                                    i
                             );
                             kList.setJenis("Pengeluaran");
                             listKategori.add(kList);
+                            kList.setKey(i);
                         }
 
                         mRecyclerAdapter = new RecyclerAdapter( KategoriTabFragment.this, listKategori);
