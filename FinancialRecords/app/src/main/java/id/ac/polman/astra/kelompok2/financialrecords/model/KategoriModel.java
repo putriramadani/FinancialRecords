@@ -6,26 +6,24 @@ public class KategoriModel {
 
     private String namakategori;
     private String jenis;
-    private String key;
+    private int key;
     private String pemasukan;
-    private List<String> pengeluaran;
+    //private String pengeluaran;
 
     public KategoriModel(){
 
     }
 
-    public KategoriModel(String namakategori, String jenis){
+    public KategoriModel(String namakategori, String jenis, int key){
         this.namakategori = namakategori;
         this.jenis = jenis;
+        this.key = key;
     }
 
-    public KategoriModel(String pemasukan){
+    public KategoriModel(String pemasukan, int key){
         this.pemasukan = pemasukan;
+        this.key = key;
     }
-//    public KategoriModel(List<String> pemasukan, List<String> pengeluaran){
-//        this.pemasukan = pemasukan;
-//        this.pengeluaran = pengeluaran;
-//    }
 
     public String getNamakategori() {
         return namakategori;
@@ -44,11 +42,11 @@ public class KategoriModel {
         this.jenis = jenis;
     }
 
-    public String getKey() {
+    public int getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setKey(int key) {
         this.key = key;
     }
 
@@ -60,13 +58,13 @@ public class KategoriModel {
         this.pemasukan = pemasukan;
     }
 
-    public List<String> getPengeluaran() {
-        return pengeluaran;
-    }
-
-    public void setPengeluaran(List<String> pengeluaran) {
-        this.pengeluaran = pengeluaran;
-    }
+//    public String getPengeluaran() {
+//        return pengeluaran;
+//    }
+//
+//    public void setPengeluaran(String pengeluaran) {
+//        this.pengeluaran = pengeluaran;
+//    }
 
 
 }

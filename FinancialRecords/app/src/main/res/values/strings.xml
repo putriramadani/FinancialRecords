@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">FinancialRecords</string>
-    <string name="form_input">Tambah Kategori</string>
+    <string name="form_input">Form Kategori</string>
     <string-array name="Spinner_items">
         <item>Pemasukan</item>
         <item>Pengeluaran</item>
