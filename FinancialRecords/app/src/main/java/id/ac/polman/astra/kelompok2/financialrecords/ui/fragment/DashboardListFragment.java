@@ -1,5 +1,6 @@
 package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,47 +11,87 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import id.ac.polman.astra.kelompok2.financialrecords.R;
-import id.ac.polman.astra.kelompok2.financialrecords.ViewModel.DashboardListViewModel;
+import id.ac.polman.astra.kelompok2.financialrecords.adapter.RecyclerAdapter;
 import id.ac.polman.astra.kelompok2.financialrecords.model.DashboardModel;
 
 public class DashboardListFragment extends Fragment {
-    private static final String TAG = DashboardListFragment.class.getSimpleName();
+    private View objectKTF;
 
-    private RecyclerView mDashboardRecyclerView;
-    private DashboardListViewModel mDashboardListViewModel;
-    private LaporanAdapter mAdapter;
-
-    public static DashboardListFragment newInstance() { return new DashboardListFragment(); }
-
-    private void updateUI(){
-        List<DashboardModel> dashboardModels = mDashboardListViewModel.getDashboardModels();
-        Log.e(TAG, "Total Kategori : " + dashboardModels.size());
-        mAdapter = new LaporanAdapter(dashboardModels);
-        mDashboardRecyclerView.setAdapter(mAdapter);
-    }
+    List<DashboardModel> listDashboard = new ArrayList<>();
+    RecyclerView mRecyclerView;
+    RecyclerView.LayoutManager mLayoutManager;
+    FirebaseFirestore db;
+    LaporanAdapter mAdapter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-//        FirebaseApp.initializeApp(getContext());
-        mDashboardListViewModel = new ViewModelProvider(this).get(DashboardListViewModel.class);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        objectKTF = inflater.inflate(R.layout.fragment_dashboard_list, container, false);
 
+        mRecyclerView = objectKTF.findViewById(R.id.dashboard_recycler_view);
+
+        db = FirebaseFirestore.getInstance();
+
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+
+
+        showData();
+
+        return objectKTF;
     }
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_dashboard_list, container, false);
-        mDashboardRecyclerView = (RecyclerView) view.findViewById(R.id.dashboard_recycler_view);
-        mDashboardRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        updateUI();
-        return view;
+    private void showData() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        String email = firebaseUser.getEmail();
+        db.collection("user").document(email)
+                .collection("Laporan").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                DashboardModel dashboardModel = new DashboardModel();
+                                dashboardModel.setJenis_kategori(document.getLong("jenis_kategori").intValue());
+                                Log.e("Login", "jenis kategori :" + dashboardModel.getJenis_kategori());
+                                dashboardModel.setJumlah((document.getLong("jumlah").intValue()));
+                                Log.e("Login", "jumlah :" + dashboardModel.getJumlah());
+                                dashboardModel.setKategori(document.getString("kategori"));
+                                Log.e("Login", "kategori :" + dashboardModel.getKategori());
+                                dashboardModel.setTanggal(document.getDate("tanggal"));
+                                Log.e("Login", "tanggal :" + dashboardModel.getTanggal());
+                                listDashboard.add(dashboardModel);
+                            }
+                        }
+                        mAdapter = new LaporanAdapter(listDashboard);
+                        mRecyclerView.setAdapter(mAdapter);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("TAG", e.getMessage());
+                    }
+                });
     }
 
     private class LaporanHolder extends RecyclerView.ViewHolder {
@@ -68,33 +109,36 @@ public class DashboardListFragment extends Fragment {
 
         public void bind(DashboardModel dashboardModel) {
             mDashboardModel = dashboardModel;
+            Log.e("Kategori", mDashboardModel.getKategori());
+            Log.e("Jumlah", String.valueOf(mDashboardModel.getJumlah()));
             mKategoriTextView.setText(mDashboardModel.getKategori());
-            mTotalTextView.setText(mDashboardModel.getJumlah());
+            mTotalTextView.setText(String.valueOf(mDashboardModel.getJumlah()));
         }
     }
 
-        private class LaporanAdapter extends RecyclerView.Adapter<LaporanHolder>{
-            private List<DashboardModel> mDashboardModels;
+    private class LaporanAdapter extends RecyclerView.Adapter<LaporanHolder>{
+        private List<DashboardModel> mDashboardModels;
 
-            public LaporanAdapter(List<DashboardModel> dashboardModels) {mDashboardModels = dashboardModels;}
+        public LaporanAdapter(List<DashboardModel> dashboardModels) {mDashboardModels = dashboardModels;}
 
-            @NonNull
-            @Override
-            public LaporanHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-                return new LaporanHolder(layoutInflater, parent);
-            }
-
-            @Override
-            public void onBindViewHolder(@NonNull LaporanHolder holder, int position) {
-                DashboardModel dashboardModel = mDashboardModels.get(position);
-                holder.bind(dashboardModel);
-            }
-
-            @Override
-            public int getItemCount() {
-                return mDashboardModels.size();
-            }
+        @NonNull
+        @Override
+        public LaporanHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+            return new LaporanHolder(layoutInflater, parent);
         }
 
+        @Override
+        public void onBindViewHolder(@NonNull LaporanHolder holder, int position) {
+            DashboardModel dashboardModel = mDashboardModels.get(position);
+            holder.bind(dashboardModel);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mDashboardModels.size();
+        }
+    }
+
 }
+

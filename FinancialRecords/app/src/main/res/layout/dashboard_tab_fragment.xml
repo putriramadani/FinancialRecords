@@ -6,27 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/nama_user"
-        android:layout_width="167dp"
-        android:layout_height="27dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+<!--    <TextView-->
+<!--        android:id="@+id/nama_user"-->
+<!--        android:layout_width="167dp"-->
+<!--        android:layout_height="27dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.022" />-->
 
     <FrameLayout
+        android:id="@+id/frame_pemasukan"
         android:layout_width="190dp"
         android:layout_height="72dp"
+        android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.159"
-        android:background="@drawable/border">
+        app:layout_constraintVertical_bias="0.004">
 
         <TextView
             android:layout_width="80dp"
@@ -37,8 +38,10 @@
             android:textColor="@color/orange"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.172"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.092" />
 
         <TextView
             android:id="@+id/nominal_pemasukan"
@@ -55,13 +58,13 @@
     <FrameLayout
         android:layout_width="190dp"
         android:layout_height="72dp"
+        android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.159"
-        android:background="@drawable/border">
+        app:layout_constraintVertical_bias="0.004">
 
         <TextView
             android:layout_width="80dp"
@@ -82,8 +85,19 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
             android:gravity="bottom"
-            android:textColor="@color/orange"
-            android:text="Rp.100,000" />
+            android:text="Rp.100,000"
+            android:textColor="@color/orange" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/child_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="617dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintTop_toBottomOf="@+id/frame_pemasukan"
+        tools:layout_editor_absoluteX="0dp">
 
     </FrameLayout>
 
