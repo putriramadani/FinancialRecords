@@ -36,14 +36,21 @@ import id.ac.polman.astra.kelompok2.financialrecords.model.KategoriModel;
 import id.ac.polman.astra.kelompok2.financialrecords.model.ResponseModel;
 import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.KategoriDialogFragment;
 import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.KategoriTabFragment;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.LaporanTabFragment;
 import id.ac.polman.astra.kelompok2.financialrecords.utils.Preference;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyViewHolder> {
     KategoriTabFragment ktr;
+    LaporanTabFragment ltr;
     List<KategoriModel> kategoriList;
 
     public RecyclerAdapter(KategoriTabFragment ktr, List<KategoriModel> kategoriList){
         this.ktr = ktr;
+        this.kategoriList = kategoriList;
+    }
+
+    public RecyclerAdapter(LaporanTabFragment ltr, List<KategoriModel> kategoriList){
+        this.ltr = ltr;
         this.kategoriList = kategoriList;
     }
 
