@@ -16,6 +16,7 @@
             android:id="@+id/nama_kategori"
             android:layout_width="229dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/orange"
             android:gravity="left"
             android:textAlignment="gravity"
             android:text="Nama Kategori" />
@@ -24,6 +25,7 @@
             android:id="@+id/total_kategori"
             android:layout_width="168dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/orange"
             android:gravity="right"
             android:textAlignment="gravity"
             android:text="Total Kategori" />
