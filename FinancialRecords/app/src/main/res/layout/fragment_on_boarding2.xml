@@ -35,6 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Skip"
@@ -53,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="Fresh"
+        android:text="Easy and"
         android:textColor="@color/orange"
         android:textSize="42sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
-        android:text="Everything"
+        android:text="Comfort to"
         android:textColor="@color/orange"
         android:textSize="56sp"
         android:textStyle="bold"
@@ -84,9 +85,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
-        android:text="Everything you will experience will be absolutely fresh"
+        android:text="record your daily finance"
         android:textColor="@color/orange"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".1"
@@ -94,7 +95,7 @@
         app:layout_constraintStart_toStartOf="@id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0"
-        app:layout_constraintWidth_percent=".5" />
+        app:layout_constraintWidth_percent=".7" />
 
     <ImageView
         android:layout_width="50dp"

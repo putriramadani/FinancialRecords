@@ -26,6 +26,11 @@ public class UserEntity {
         this.pengeluaran = pengeluaran;
     }
 
+    public UserEntity(String nama, String alamat) {
+        this.nama = nama;
+        this.alamat = alamat;
+    }
+
     public String getEmail() {
         return email;
     }

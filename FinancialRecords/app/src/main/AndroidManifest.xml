@@ -14,7 +14,6 @@
         android:theme="@style/Theme.FinancialRecords">
         <activity android:name=".ui.activity.HomeActivity"></activity>
         <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name=".ui.activity.ProfileActivity" />
         <activity android:name=".ui.activity.IntroductoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
