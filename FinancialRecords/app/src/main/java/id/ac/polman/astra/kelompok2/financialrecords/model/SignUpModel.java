@@ -15,6 +15,11 @@ public class SignUpModel {
         this.nama = nama;
     }
 
+    public SignUpModel(String nama, String alamat){
+        this.alamat = alamat;
+        this.nama = nama;
+    }
+
     public SignUpModel(){
     }
 

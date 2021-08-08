@@ -33,8 +33,7 @@ import java.util.List;
 import id.ac.polman.astra.kelompok2.financialrecords.R;
 import id.ac.polman.astra.kelompok2.financialrecords.model.DashboardModel;
 import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.HomeActivity;
-import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.LoginActivity;
-import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.ProfileActivity;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.LoginActivity;;
 
 public class DashboardTabFragment extends Fragment {
 

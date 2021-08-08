@@ -35,6 +35,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Skip"
@@ -53,9 +54,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text="Fresh"
+        android:text="enjoy Manage"
         android:textColor="@color/white"
-        android:textSize="42sp"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -68,9 +69,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
-        android:text="Everything"
+        android:text="Your Finance"
         android:textColor="@color/white"
-        android:textSize="56sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,9 +85,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
-        android:text="Everything you will experience will be absolutely fresh"
+        android:text="with Financial Records"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".1"
@@ -94,7 +95,7 @@
         app:layout_constraintStart_toStartOf="@id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0"
-        app:layout_constraintWidth_percent=".5" />
+        app:layout_constraintWidth_percent=".8" />
 
     <ImageView
         android:layout_width="50dp"
@@ -112,8 +113,8 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="@color/white"
-        android:src="@drawable/next"
+        app:backgroundTint="@color/brown"
+        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
         app:layout_constraintVertical_bias="1"
         app:layout_constraintHorizontal_bias="1"
         android:layout_margin="16dp"
