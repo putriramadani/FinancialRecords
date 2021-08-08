@@ -1,90 +1,91 @@
 package id.ac.polman.astra.kelompok2.financialrecords.adapter;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentManager;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
+import org.w3c.dom.Text;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 
-import id.ac.polman.astra.kelompok2.financialrecords.Entity.UserEntity;
 import id.ac.polman.astra.kelompok2.financialrecords.R;
-import id.ac.polman.astra.kelompok2.financialrecords.model.KategoriModel;
+import id.ac.polman.astra.kelompok2.financialrecords.model.DashboardModel;
 import id.ac.polman.astra.kelompok2.financialrecords.model.LaporanModel;
-import id.ac.polman.astra.kelompok2.financialrecords.model.ResponseModel;
-import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.KategoriDialogFragment;
-import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.KategoriTabFragment;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.DashboardListFragment;
 import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.LaporanTabFragment;
-import id.ac.polman.astra.kelompok2.financialrecords.utils.Preference;
+import id.ac.polman.astra.kelompok2.financialrecords.utils.Validation;
 
-public class LaporanAdapter extends RecyclerView.Adapter<LaporanAdapter.MyViewHolder> {
+public class LaporanAdapter extends RecyclerView.Adapter<LaporanAdapter.LaporanHolder> {
     LaporanTabFragment ltr;
-    List<LaporanModel> laporanList;
+    List<LaporanModel> mLaporanModels;
+    Locale id = new Locale("in","ID");
+    SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("dd-MM-YYYY", id);
 
-    public LaporanAdapter(LaporanTabFragment ltr, List<LaporanModel> laporanList){
+    public LaporanAdapter(LaporanTabFragment ltr, List<LaporanModel> laporanModels) {
         this.ltr = ltr;
-        this.laporanList = laporanList;
+        mLaporanModels = laporanModels;
     }
 
     @NonNull
     @Override
-    public LaporanAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LaporanHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView =  inflater.inflate(R.layout.list_item_laporan, parent, false);
-        return new MyViewHolder(itemView);
+        return new LaporanHolder(itemView);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        LaporanModel laporanModel = laporanList.get(position);
-//        holder.nama_kategori.setText("Nama                 : "+laporanModel.);
-//        holder.jenis_kategori.setText("Jenis Kategori : " + kategoriModel.getJenis());
-//
-//        Log.d("","CEK KEY:"+kategoriModel.getKey());
-        Log.d("","CEK POSISI:"+getItemCount());
-
+    public void onBindViewHolder(@NonNull LaporanHolder holder, int position) {
+        LaporanModel laporanModel = mLaporanModels.get(position);
+        holder.bind(laporanModel);
     }
 
     @Override
     public int getItemCount() {
-        return laporanList.size();
+        return mLaporanModels.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nama_kategori;
-        TextView jenis_kategori;
-        //TextView jenis_kategori;
+    public class LaporanHolder extends RecyclerView.ViewHolder {
+        private TextView mKategoriTextView;
+        private TextView mTotalTextView;
+        private TextView mTanggalTextView;
 
-        CardView cv_kategori;
+        private LaporanModel mLaporanModel;
 
-        public MyViewHolder(@NonNull View itemView){
+        public LaporanHolder(View itemView) {
             super(itemView);
-            nama_kategori = itemView.findViewById(R.id.nama_kategori);
-            jenis_kategori = itemView.findViewById(R.id.jenis_kategori);
-            cv_kategori = itemView.findViewById(R.id.cv_kategori);
+            mKategoriTextView = (TextView) itemView.findViewById(R.id.nama_kategori);
+            mTotalTextView = (TextView) itemView.findViewById(R.id.total_kategori);
+            mTanggalTextView = (TextView) itemView.findViewById(R.id.tanggal);
         }
+
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        public void bind(LaporanModel laporanModel) {
+            mLaporanModel = laporanModel;
+            Log.e("Kategori", mLaporanModel.getKategori());
+            Log.e("Jumlah", String.valueOf(mLaporanModel.getJumlah()));
+
+            mKategoriTextView.setText(mLaporanModel.getKategori());
+            mTotalTextView.setText(formatRupiah(Double.parseDouble(String.valueOf(mLaporanModel.getJumlah()))));
+            mTanggalTextView.setText(mSimpleDateFormat.format(laporanModel.getTanggal()));
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public String formatRupiah(Double number){
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        return formatRupiah.format(number);
     }
 }
