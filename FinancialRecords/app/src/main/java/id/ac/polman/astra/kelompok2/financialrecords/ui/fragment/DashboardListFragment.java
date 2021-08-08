@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -97,20 +98,39 @@ public class DashboardListFragment extends Fragment {
     private class LaporanHolder extends RecyclerView.ViewHolder {
         private TextView mKategoriTextView;
         private TextView mTotalTextView;
+        private TextView mPemasukanTextView;
+        private  TextView mPengeluaranTextView;
 
         private DashboardModel mDashboardModel;
 
         public LaporanHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_dashboard, parent, false));
 
+            //NavHostFragment navHostFragment = (NavHostFragment) getParentFragment();
+            //Fragment parentFragment = (Fragment) navHostFragment.getParentFragment();
+            //parentFragment.getView().findViewById(R.id.)
+
             mKategoriTextView = (TextView) itemView.findViewById(R.id.nama_kategori);
             mTotalTextView = (TextView) itemView.findViewById(R.id.total_kategori);
+            //mPemasukanTextView = (TextView) parentFragment.getView().findViewById(R.id.nominal_pemasukan);
+            //mPemasukanTextView = (TextView) parentFragment.getView().findViewById(R.id.nominal_pengeluaran);
+
         }
 
         public void bind(DashboardModel dashboardModel) {
             mDashboardModel = dashboardModel;
-            Log.e("Kategori", mDashboardModel.getKategori());
-            Log.e("Jumlah", String.valueOf(mDashboardModel.getJumlah()));
+            int pemasukan = 0;
+            int pengeluaran = 0;
+//            int pemasukan_awal = Integer.parseInt(mPemasukanTextView.getText().toString());
+//            int pengeluaran_awal = Integer.parseInt(mPengeluaranTextView.getText().toString());
+//            if (mDashboardModel.getJenis_kategori() == 1) {
+//                pemasukan = pemasukan_awal + mDashboardModel.getJumlah();
+//            }
+//            else {
+//                pengeluaran = pengeluaran_awal + mDashboardModel.getJumlah();
+//            }
+//            mPemasukanTextView.setText(String.valueOf(pemasukan));
+//            mPengeluaranTextView.setText(String.valueOf(pengeluaran));
             mKategoriTextView.setText(mDashboardModel.getKategori());
             mTotalTextView.setText(String.valueOf(mDashboardModel.getJumlah()));
         }
