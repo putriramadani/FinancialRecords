@@ -7,12 +7,18 @@ public class DashboardModel {
     private String kategori;
     private int jumlah;
     private Date tanggal;
+    private int pemasukan;
+    private int pengeluaran;
+    private int saldo;
 
-    public DashboardModel(int jenis_kategori, String kategori, int jumlah, Date tanggal) {
+    public DashboardModel(int jenis_kategori, String kategori, int jumlah, Date tanggal, int pemasukan, int pengeluaran, int saldo) {
         this.jenis_kategori = jenis_kategori;
         this.kategori = kategori;
         this.jumlah = jumlah;
         this.tanggal = tanggal;
+        this.pemasukan = pemasukan;
+        this.pengeluaran = pengeluaran;
+        this.saldo = saldo;
     }
 
     public DashboardModel(){}
@@ -47,5 +53,29 @@ public class DashboardModel {
 
     public void setTanggal(Date tanggal) {
         this.tanggal = tanggal;
+    }
+
+    public int getPemasukan() {
+        return pemasukan;
+    }
+
+    public void setPemasukan(int pemasukan) {
+        this.pemasukan = pemasukan;
+    }
+
+    public int getPengeluaran() {
+        return pengeluaran;
+    }
+
+    public void setPengeluaran(int pengeluaran) {
+        this.pengeluaran = pengeluaran;
+    }
+
+    public int getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
     }
 }

@@ -47,7 +47,7 @@
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="535dp"
+        android:layout_height="575dp"
         android:background="@drawable/vie_main_bg"
         app:tabTextColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
