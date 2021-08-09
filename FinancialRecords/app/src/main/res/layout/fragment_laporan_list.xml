@@ -7,13 +7,8 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <LinearLayout
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -32,14 +27,17 @@
                 android:enabled="false"
                 android:textColor="@color/orange"
                 android:textColorHint="@color/orange"
-                android:textSize="14sp"
-                android:hint="Minimal" />
+                android:gravity="center"
+                android:textAlignment="gravity"
+                android:textSize="14dp"
+                android:hint="Start Date" />
 
             <Button
+                android:drawableRight="@drawable/ic_baseline_calendar_white_24"
                 android:id="@+id/btn_minimal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date" />
+                android:layout_width="40dp"
+                android:paddingEnd="9dp"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
 
@@ -57,28 +55,33 @@
                 android:enabled="false"
                 android:textColor="@color/orange"
                 android:textColorHint="@color/orange"
-                android:textSize="14sp"
-                android:hint="Maximal" />
+                android:textSize="14dp"
+                android:gravity="center"
+                android:textAlignment="gravity"
+                android:hint="End Date" />
 
             <Button
+                android:drawableRight="@drawable/ic_baseline_calendar_white_24"
                 android:id="@+id/btn_maximal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date" />
+                android:layout_width="40dp"
+                android:paddingEnd="9dp"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
-    </LinearLayout>
 
         <Button
+            android:layout_marginStart="10dp"
             android:id="@+id/cari"
-            android:layout_width="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="Cari"
+            android:paddingEnd="9dp"
             android:enabled="false"
+            android:drawableRight="@drawable/ic_baseline_search_24"
             android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,7 +92,7 @@
         android:id="@+id/cv_kategori_laporan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="70dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
@@ -123,7 +126,7 @@
                     android:textColor="@color/white"
                     android:layout_marginTop="8dp"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="14dp"
                     android:text="Total Pemasukan"/>
 
                 <TextView
@@ -132,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="14dp"
                     android:padding="5dp"
                     android:layout_marginTop="8dp"
                     android:text="Total Pengeluaran"/>
@@ -143,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="14dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:padding="5dp"

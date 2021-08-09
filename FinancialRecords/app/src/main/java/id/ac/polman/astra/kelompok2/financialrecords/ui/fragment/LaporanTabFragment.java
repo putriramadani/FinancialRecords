@@ -52,7 +52,6 @@ import id.ac.polman.astra.kelompok2.financialrecords.utils.Validation;
 
 public class LaporanTabFragment extends Fragment {
     private View objectKTF;
-    //FloatingActionButton fab_tambah;
 
     List<LaporanModel> listLaporan = new ArrayList<>();
     RecyclerView.LayoutManager layoutManager;
@@ -172,40 +171,80 @@ public class LaporanTabFragment extends Fragment {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         String email = firebaseUser.getEmail();
         db.collection("user").document(email)
-                .collection("Laporan")
-                .orderBy("tanggal", Query.Direction.ASCENDING)
-                .startAt(mSimpleDateFormat.format(date_minimal.getTime())).endAt(mSimpleDateFormat.format(date_maximal.getTime()))
-                //.startAfter(date_minimal.getTime()).endBefore(date_maximal.getTime())
-                .get()
+            .collection("Laporan")
+            .orderBy("tanggal", Query.Direction.ASCENDING)
+            .startAt(date_minimal).endAt(date_maximal)
+            //.startAfter(date_minimal.getTime()).endBefore(date_maximal.getTime())
+            .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         //showLisener(task);
                         if (task.isSuccessful()) {
-                            Log.e("BUTTON CARI", "isSuccessfull :" +date_minimal.getTime() +"after" +date_maximal.getTime());
+                            Log.e("BUTTON CARI", "isSuccessfull :" +date_minimal +"after" +date_maximal);
                             listLaporan.clear();
+
+                            //show data
+                            int listjumlahtam = 0;
+                            int listjumtam = 0;
+                            int listjumlahkur = 0;
+                            int listjumkur = 0;
+                            int listkategori = 0;
+
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 LaporanModel laporanModel = new LaporanModel();
                                 laporanModel.setJenis_kategori(document.getLong("jenis_kategori").intValue());
-                                Log.e("Login", "jenis kategori :" + laporanModel.getJenis_kategori());
-
                                 laporanModel.setJumlah((document.getLong("jumlah").intValue()));
-                                Log.e("Login", "jumlah :" + laporanModel.getJumlah());
-
                                 laporanModel.setKategori(document.getString("kategori"));
-                                Log.e("Login", "kategori :" + laporanModel.getKategori());
-
                                 laporanModel.setTanggal(document.getDate("tanggal"));
-                                Log.e("Login", "tanggal :" + laporanModel.getTanggal());
-
                                 listLaporan.add(laporanModel);
-                            }
 
-                            Log.e("BUTTON CARI", " selesai FOR");
+                                Log.e("BUTTON CARI", " selesai FOR");
+
+                                //getTotalPemasukan
+                                listkategori = (int) document.getLong("jenis_kategori").intValue();
+
+                                if(listkategori == 1){
+                                    listjumlahtam = (int) document.getLong("jumlah").intValue();
+                                    Log.e("LAPORAN TAMBAH", "listjumlah :" + listjumlahtam);
+
+                                    listjumtam = listjumtam + listjumlahtam;
+                                    Log.e("LAPORAN LIST TAMBAH", "listjum :" + listjumtam);
+                                }else if (listkategori == 2){
+                                    listjumlahkur = (int) document.getLong("jumlah").intValue();
+                                    Log.e("LAPORAN KURANG", "listjumlah :" + listjumlahkur);
+
+                                    listjumkur = listjumkur + listjumlahkur;
+                                    Log.e("LAPORAN LIST KURANG", "listjum :" + listjumkur);
+                                }
+
+                            }
+                            laporanModel.setTotal_pemasukan(listjumtam);
+                            String totalpem = String.valueOf(laporanModel.getTotal_pemasukan());
+                            Log.e("LAPORAN", "Total Pemasukan :" + totalpem);
+
+                            total_pemasukan = objectKTF.findViewById(R.id.total_pemasukan);
+                            total_pemasukan.setText("Total Pemasukan                              " + formatRupiah(Double.parseDouble(totalpem)));
+
+                            laporanModel.setTotal_pengeluaran(listjumkur);
+                            String totalpen = String.valueOf(laporanModel.getTotal_pengeluaran());
+                            Log.e("LAPORAN", "Total Pengeluaran :" + totalpen);
+                            Log.e("LAPORAN", "Total Pemasukan di pengeluaran :" + String.valueOf(laporanModel.getTotal_pemasukan()));
+
+                            total_pengeluaran = objectKTF.findViewById(R.id.total_pengeluaran);
+                            total_pengeluaran.setText("Total Pengeluaran                            " + formatRupiah(Double.parseDouble(totalpen)));
+
+                            //SELISIH
+                            int totpem = laporanModel.getTotal_pemasukan();
+                            int totpen = laporanModel.getTotal_pengeluaran();
+                            int totsel = totpem - totpen;
+                            Log.e("SELISIH", "Selisih :" + String.valueOf(totsel));
+                            selisih = objectKTF.findViewById(R.id.selisih);
+                            selisih.setText("Selisih                                                " + formatRupiah(Double.parseDouble(String.valueOf(totsel))));
                         }
                         mLaporanAdapter = new LaporanAdapter(LaporanTabFragment.this, listLaporan);
                         rv_view_laporan.setAdapter(mLaporanAdapter);
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -263,7 +302,8 @@ public class LaporanTabFragment extends Fragment {
 
         //getTotalPemasukan
         db.collection("user").document(firebaseUser.getEmail())
-            .collection("Laporan").whereEqualTo("jenis_kategori", 1).get()
+            .collection("Laporan").whereEqualTo("jenis_kategori", 1)
+            .get()
             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
@@ -285,20 +325,20 @@ public class LaporanTabFragment extends Fragment {
                     Log.e("LAPORAN", "Total Pemasukan :" + totalpem);
 
                     total_pemasukan = objectKTF.findViewById(R.id.total_pemasukan);
-                    total_pemasukan.setText("Total Pemasukan                  "+formatRupiah(Double.parseDouble(totalpem)));
+                    total_pemasukan.setText("Total Pemasukan                              "+formatRupiah(Double.parseDouble(totalpem)));
                 }
             })
             .addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    //Toast.makeText(KategoriTabFragment.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e("TAG", e.getMessage());
                 }
             });
 
         //getTotalPengeluaran
         db.collection("user").document(firebaseUser.getEmail())
-                .collection("Laporan").whereEqualTo("jenis_kategori", 2).get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            .collection("Laporan").whereEqualTo("jenis_kategori", 2)
+            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -320,7 +360,7 @@ public class LaporanTabFragment extends Fragment {
                         Log.e("LAPORAN", "Total Pemasukan di pengeluaran :" + String.valueOf(laporanModel.getTotal_pemasukan()));
 
                         total_pengeluaran = objectKTF.findViewById(R.id.total_pengeluaran);
-                        total_pengeluaran.setText("Total Pengeluaran                "+formatRupiah(Double.parseDouble(totalpen)));
+                        total_pengeluaran.setText("Total Pengeluaran                            "+formatRupiah(Double.parseDouble(totalpen)));
 
                         //SELISIH
                         int totpem = laporanModel.getTotal_pemasukan();
@@ -328,14 +368,14 @@ public class LaporanTabFragment extends Fragment {
                         int totsel = totpem - totpen;
                         Log.e("SELISIH", "Selisih :" + String.valueOf(totsel));
                         selisih = objectKTF.findViewById(R.id.selisih);
-                        selisih.setText("Selisih                                    "+formatRupiah(Double.parseDouble(String.valueOf(totsel))));
+                        selisih.setText("Selisih                                                "+formatRupiah(Double.parseDouble(String.valueOf(totsel))));
 
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        //Toast.makeText(KategoriTabFragment.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("TAG", e.getMessage());
                     }
                 });
     }

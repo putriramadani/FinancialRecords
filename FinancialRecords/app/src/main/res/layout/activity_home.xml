@@ -8,7 +8,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:id="@+id/toolbar"
         android:background="@drawable/bg"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -20,11 +20,10 @@
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="575dp"
+        android:layout_height="562dp"
         android:background="@drawable/vie_main_bg"
-        app:tabTextColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"></FrameLayout>
+        app:tabTextColor="@color/black"></FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
