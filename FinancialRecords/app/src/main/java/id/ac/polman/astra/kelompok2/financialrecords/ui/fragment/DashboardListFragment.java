@@ -1,6 +1,7 @@
 package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,8 +11,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+//import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,14 +24,22 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import id.ac.polman.astra.kelompok2.financialrecords.R;
+import id.ac.polman.astra.kelompok2.financialrecords.adapter.LaporanAdapter;
 import id.ac.polman.astra.kelompok2.financialrecords.adapter.RecyclerAdapter;
+import id.ac.polman.astra.kelompok2.financialrecords.model.DashboardModel;
 import id.ac.polman.astra.kelompok2.financialrecords.model.DashboardModel;
 
 public class DashboardListFragment extends Fragment {
@@ -40,6 +50,11 @@ public class DashboardListFragment extends Fragment {
     RecyclerView.LayoutManager mLayoutManager;
     FirebaseFirestore db;
     LaporanAdapter mAdapter;
+
+    Calendar calendar = Calendar.getInstance();
+    Locale id = new Locale("in","ID");
+    SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("dd-MM-YYYY", id);
+    Date currentDate = calendar.getTime();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -53,37 +68,100 @@ public class DashboardListFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-
-
-        showData();
+        showDateData();
 
         return objectKTF;
     }
 
-    private void showData() {
+//    private void showData() {
+//        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+//        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+//        String email = firebaseUser.getEmail();
+//        db.collection("user").document(email)
+//                .collection("Laporan").get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                DashboardModel dashboardModel = new DashboardModel();
+//                                dashboardModel.setJenis_kategori(document.getLong("jenis_kategori").intValue());
+//                                Log.e("Login", "jenis kategori :" + dashboardModel.getJenis_kategori());
+//                                dashboardModel.setJumlah((document.getLong("jumlah").intValue()));
+//                                Log.e("Login", "jumlah :" + dashboardModel.getJumlah());
+//                                dashboardModel.setKategori(document.getString("kategori"));
+//                                Log.e("Login", "kategori :" + dashboardModel.getKategori());
+//                                dashboardModel.setTanggal(document.getDate("tanggal"));
+//                                Log.e("Login", "tanggal :" + dashboardModel.getTanggal());
+//                                listDashboard.add(dashboardModel);
+//                            }
+//                        }
+//                        mAdapter = new LaporanAdapter(listDashboard);
+//                        mRecyclerView.setAdapter(mAdapter);
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.e("TAG", e.getMessage());
+//                    }
+//                });
+//    }
+
+    private void showDateData() {
+        Log.e("BUTTON CARI", " MASUK DATE DATA");
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         String email = firebaseUser.getEmail();
         db.collection("user").document(email)
-                .collection("Laporan").get()
+                .collection("Laporan")
+                .orderBy("tanggal", Query.Direction.ASCENDING)
+                .startAt(yesterday()).endAt(currentDate)
+                //.startAfter(date_minimal.getTime()).endBefore(date_maximal.getTime())
+                .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
                         if (task.isSuccessful()) {
+                            //show data
+                            int listjumlahtam = 0;
+                            int listjumtam = 0;
+                            int listjumlahkur = 0;
+                            int listjumkur = 0;
+                            int listkategori = 0;
+
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 DashboardModel dashboardModel = new DashboardModel();
                                 dashboardModel.setJenis_kategori(document.getLong("jenis_kategori").intValue());
-                                Log.e("Login", "jenis kategori :" + dashboardModel.getJenis_kategori());
                                 dashboardModel.setJumlah((document.getLong("jumlah").intValue()));
-                                Log.e("Login", "jumlah :" + dashboardModel.getJumlah());
                                 dashboardModel.setKategori(document.getString("kategori"));
-                                Log.e("Login", "kategori :" + dashboardModel.getKategori());
                                 dashboardModel.setTanggal(document.getDate("tanggal"));
-                                Log.e("Login", "tanggal :" + dashboardModel.getTanggal());
                                 listDashboard.add(dashboardModel);
+
+                                Log.e("BUTTON CARI", " selesai FOR");
+
+                                //getTotalPemasukan
+                                listkategori = (int) document.getLong("jenis_kategori").intValue();
+
+                                if(listkategori == 1){
+                                    listjumlahtam = (int) document.getLong("jumlah").intValue();
+                                    Log.e("LAPORAN TAMBAH", "listjumlah :" + listjumlahtam);
+
+                                    listjumtam = listjumtam + listjumlahtam;
+                                    Log.e("LAPORAN LIST TAMBAH", "listjum :" + listjumtam);
+                                }else if (listkategori == 2){
+                                    listjumlahkur = (int) document.getLong("jumlah").intValue();
+                                    Log.e("LAPORAN KURANG", "listjumlah :" + listjumlahkur);
+
+                                    listjumkur = listjumkur + listjumlahkur;
+                                    Log.e("LAPORAN LIST KURANG", "listjum :" + listjumkur);
+                                }
+
                             }
                         }
-                        mAdapter = new LaporanAdapter(listDashboard);
+                        mAdapter = new DashboardListFragment.LaporanAdapter(listDashboard);
                         mRecyclerView.setAdapter(mAdapter);
                     }
                 })
@@ -98,6 +176,7 @@ public class DashboardListFragment extends Fragment {
     private class LaporanHolder extends RecyclerView.ViewHolder {
         private TextView mKategoriTextView;
         private TextView mTotalTextView;
+        private TextView mTanggalTextView;
         private TextView mPemasukanTextView;
         private  TextView mPengeluaranTextView;
 
@@ -112,11 +191,13 @@ public class DashboardListFragment extends Fragment {
 
             mKategoriTextView = (TextView) itemView.findViewById(R.id.nama_kategori);
             mTotalTextView = (TextView) itemView.findViewById(R.id.total_kategori);
+            mTanggalTextView = (TextView) itemView.findViewById(R.id.tanggal);
             //mPemasukanTextView = (TextView) parentFragment.getView().findViewById(R.id.nominal_pemasukan);
             //mPemasukanTextView = (TextView) parentFragment.getView().findViewById(R.id.nominal_pengeluaran);
 
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         public void bind(DashboardModel dashboardModel) {
             mDashboardModel = dashboardModel;
             int pemasukan = 0;
@@ -132,7 +213,8 @@ public class DashboardListFragment extends Fragment {
 //            mPemasukanTextView.setText(String.valueOf(pemasukan));
 //            mPengeluaranTextView.setText(String.valueOf(pengeluaran));
             mKategoriTextView.setText(mDashboardModel.getKategori());
-            mTotalTextView.setText(String.valueOf(mDashboardModel.getJumlah()));
+            mTotalTextView.setText(formatRupiah(Double.parseDouble(String.valueOf(mDashboardModel.getJumlah()))));
+            mTanggalTextView.setText(mSimpleDateFormat.format(dashboardModel.getTanggal()));
         }
     }
 
@@ -148,6 +230,7 @@ public class DashboardListFragment extends Fragment {
             return new LaporanHolder(layoutInflater, parent);
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void onBindViewHolder(@NonNull LaporanHolder holder, int position) {
             DashboardModel dashboardModel = mDashboardModels.get(position);
@@ -160,5 +243,17 @@ public class DashboardListFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public String formatRupiah(Double number){
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        return formatRupiah.format(number);
+    }
+
+    private Date yesterday() {
+        final Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        return cal.getTime();
+    }
 }
 
