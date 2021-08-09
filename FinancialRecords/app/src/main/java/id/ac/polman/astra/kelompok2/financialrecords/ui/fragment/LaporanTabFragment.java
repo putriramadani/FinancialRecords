@@ -262,6 +262,7 @@ public class LaporanTabFragment extends Fragment {
 
         db.collection("user").document(email)
                 .collection("Laporan")
+                .orderBy("tanggal", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
