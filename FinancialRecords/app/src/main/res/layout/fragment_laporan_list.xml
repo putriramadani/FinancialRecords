@@ -101,6 +101,12 @@
         android:backgroundTint="@color/brown"
         android:orientation="vertical">
 
+<!--///////////////-->
+
+
+<!--        /////////////////////////////-->
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -119,7 +125,7 @@
                 android:paddingBottom="10dp">
 
                 <TextView
-                    android:id="@+id/total_pemasukan"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -130,7 +136,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/total_pengeluaran"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -141,13 +147,68 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/selisih"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:padding="5dp"
                     android:text="Selisih"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/total_pemasukan"
+                    android:layout_width="138dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:text="Rp0"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/total_pengeluaran"
+                    android:layout_width="139dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:text="Rp0"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/selisih"
+                    android:layout_width="138dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:text="Rp0"
+                    android:textAlignment="gravity"
                     android:textColor="@color/white"
                     android:textSize="14dp"
                     android:textStyle="bold" />

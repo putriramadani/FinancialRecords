@@ -3,6 +3,8 @@ package id.ac.polman.astra.kelompok2.financialrecords.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ public class LoginTabFragment extends Fragment {
     private EditText mEmail, mPass;
     private Button mLogin;
     private TextView mForgetPass;
+    private ImageView mShow;
     float v = 0;
 
     private View objectLTF;
@@ -55,6 +59,7 @@ public class LoginTabFragment extends Fragment {
         mPass = objectLTF.findViewById(R.id.pass);
         mLogin = objectLTF.findViewById(R.id.button);
         //mForgetPass = objectLTF.findViewById(R.id.forget_pass);
+        mShow = objectLTF.findViewById(R.id.show_pass_btn);
 
 //        mEmail.setTranslationX(800);
 //        mPass.setTranslationX(800);
@@ -85,6 +90,26 @@ public class LoginTabFragment extends Fragment {
             mEmail = objectLTF.findViewById(R.id.email);
             mPass = objectLTF.findViewById(R.id.pass);
             mLogin = objectLTF.findViewById(R.id.login_button);
+            mShow = objectLTF.findViewById(R.id.show_pass_btn);
+
+            mShow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mPass.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                        ((ImageView)(v)).setImageResource(R.drawable.ic_baseline_remove_red_eye_24);
+
+                        //Show Password
+                        mPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    }
+                    else{
+                        ((ImageView)(v)).setImageResource(R.drawable.ic_baseline_remove_red_eye_24);
+
+                        //Hide Password
+                        mPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+                    }
+                }
+            });
             //mForgetPass = objectLTF.findViewById(R.id.forget_pass);
 
             //mProgressBar = objectLTF.findViewById(R.id.loginPB);
@@ -149,7 +174,7 @@ public class LoginTabFragment extends Fragment {
                         Log.e("Login", "sukses");
                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                         String email = firebaseUser.getEmail();
-                        Toast.makeText(getContext(), "LoggedIn\n"+email, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), "LoggedIn\n"+email, Toast.LENGTH_SHORT).show();
 
                         //open profile activity
                         startActivity(new Intent(getActivity().getApplicationContext(), HomeActivity.class));
@@ -166,4 +191,5 @@ public class LoginTabFragment extends Fragment {
                     }
                 });
     }
+
 }
