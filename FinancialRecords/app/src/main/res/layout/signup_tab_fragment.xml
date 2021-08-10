@@ -76,6 +76,7 @@
         android:textColor="@color/orange"
         android:textSize="16sp"
         android:hint="Password"
+        android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -83,6 +84,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_email" />
+
+    <ImageView
+        android:id="@+id/show_pass_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:alpha=".5"
+        android:padding="5dp"
+        android:src="@drawable/ic_baseline_remove_red_eye_24"
+        app:layout_constraintBottom_toBottomOf="@+id/signup_pass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.862"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/signup_pass" />
 
     <EditText
         android:id="@+id/signup_repass"
@@ -95,6 +111,7 @@
         android:textColorHint="@color/grey"
         android:textColor="@color/orange"
         android:textSize="16sp"
+        android:inputType="textPassword"
         android:hint="Confirm Password"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -103,6 +120,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_pass" />
+
+    <ImageView
+        android:id="@+id/show_repass_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:alpha=".5"
+        android:padding="5dp"
+        android:src="@drawable/ic_baseline_remove_red_eye_24"
+        app:layout_constraintBottom_toBottomOf="@+id/signup_repass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.862"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/signup_repass" />
 
     <Button
         android:id="@+id/button"

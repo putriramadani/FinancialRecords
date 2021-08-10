@@ -234,7 +234,7 @@ public class LaporanTabFragment extends Fragment {
                             Log.e("LAPORAN", "Total Pemasukan :" + totalpem);
 
                             total_pemasukan = objectKTF.findViewById(R.id.total_pemasukan);
-                            total_pemasukan.setText("Total Pemasukan                              " + formatRupiah(Double.parseDouble(totalpem)));
+                            total_pemasukan.setText(formatRupiah(Double.parseDouble(totalpem)));
 
                             laporanModel.setTotal_pengeluaran(listjumkur);
                             String totalpen = String.valueOf(laporanModel.getTotal_pengeluaran());
@@ -242,7 +242,7 @@ public class LaporanTabFragment extends Fragment {
                             Log.e("LAPORAN", "Total Pemasukan di pengeluaran :" + String.valueOf(laporanModel.getTotal_pemasukan()));
 
                             total_pengeluaran = objectKTF.findViewById(R.id.total_pengeluaran);
-                            total_pengeluaran.setText("Total Pengeluaran                            " + formatRupiah(Double.parseDouble(totalpen)));
+                            total_pengeluaran.setText(formatRupiah(Double.parseDouble(totalpen)));
 
                             //SELISIH
                             int totpem = laporanModel.getTotal_pemasukan();
@@ -250,7 +250,7 @@ public class LaporanTabFragment extends Fragment {
                             int totsel = totpem - totpen;
                             Log.e("SELISIH", "Selisih :" + String.valueOf(totsel));
                             selisih = objectKTF.findViewById(R.id.selisih);
-                            selisih.setText("Selisih                                                " + formatRupiah(Double.parseDouble(String.valueOf(totsel))));
+                            selisih.setText(formatRupiah(Double.parseDouble(String.valueOf(totsel))));
                         }
                         mLaporanAdapter = new LaporanAdapter(LaporanTabFragment.this, listLaporan);
                         rv_view_laporan.setAdapter(mLaporanAdapter);
@@ -328,7 +328,7 @@ public class LaporanTabFragment extends Fragment {
                     Log.e("LAPORAN", "Total Pemasukan :" + totalpem);
 
                     total_pemasukan = objectKTF.findViewById(R.id.total_pemasukan);
-                    total_pemasukan.setText("Total Pemasukan                              "+formatRupiah(Double.parseDouble(totalpem)));
+                    total_pemasukan.setText(formatRupiah(Double.parseDouble(totalpem)));
                 }
             })
             .addOnFailureListener(new OnFailureListener() {
@@ -363,7 +363,7 @@ public class LaporanTabFragment extends Fragment {
                         Log.e("LAPORAN", "Total Pemasukan di pengeluaran :" + String.valueOf(laporanModel.getTotal_pemasukan()));
 
                         total_pengeluaran = objectKTF.findViewById(R.id.total_pengeluaran);
-                        total_pengeluaran.setText("Total Pengeluaran                            "+formatRupiah(Double.parseDouble(totalpen)));
+                        total_pengeluaran.setText(formatRupiah(Double.parseDouble(totalpen)));
 
                         //SELISIH
                         int totpem = laporanModel.getTotal_pemasukan();
@@ -371,7 +371,7 @@ public class LaporanTabFragment extends Fragment {
                         int totsel = totpem - totpen;
                         Log.e("SELISIH", "Selisih :" + String.valueOf(totsel));
                         selisih = objectKTF.findViewById(R.id.selisih);
-                        selisih.setText("Selisih                                                "+formatRupiah(Double.parseDouble(String.valueOf(totsel))));
+                        selisih.setText(formatRupiah(Double.parseDouble(String.valueOf(totsel))));
 
                     }
                 })
