@@ -60,6 +60,7 @@ public class LaporanAdapter extends RecyclerView.Adapter<LaporanAdapter.LaporanH
         private TextView mKategoriTextView;
         private TextView mTotalTextView;
         private TextView mTanggalTextView;
+        private TextView mKeteranganTextView;
 
         private LaporanModel mLaporanModel;
 
@@ -68,6 +69,7 @@ public class LaporanAdapter extends RecyclerView.Adapter<LaporanAdapter.LaporanH
             mKategoriTextView = (TextView) itemView.findViewById(R.id.nama_kategori);
             mTotalTextView = (TextView) itemView.findViewById(R.id.total_kategori);
             mTanggalTextView = (TextView) itemView.findViewById(R.id.tanggal);
+            mKeteranganTextView = (TextView) itemView.findViewById(R.id.keterangan_kategori);
         }
 
         @RequiresApi(api = Build.VERSION_CODES.N)
@@ -79,6 +81,7 @@ public class LaporanAdapter extends RecyclerView.Adapter<LaporanAdapter.LaporanH
             mKategoriTextView.setText(mLaporanModel.getKategori());
             mTotalTextView.setText(formatRupiah(Double.parseDouble(String.valueOf(mLaporanModel.getJumlah()))));
             mTanggalTextView.setText(mSimpleDateFormat.format(laporanModel.getTanggal()));
+            mKeteranganTextView.setText(mLaporanModel.getKeterangan());
         }
     }
 
