@@ -61,7 +61,7 @@ public class DashboardTabFragment extends Fragment {
 
     Calendar calendar = Calendar.getInstance();
     Locale id = new Locale("in","ID");
-    SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("dd-MM-YYYY", id);
+    SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("EEE, dd/MM/yyyy", id);
     Date currentDate = calendar.getTime();
     DashboardModel dashboardModel = new DashboardModel();
 
@@ -89,62 +89,6 @@ public class DashboardTabFragment extends Fragment {
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.child_fragment_container, childFragment).commit();
     }
-
-//    private void showData(){
-//        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-//        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-//        DashboardModel dashboardModel = new DashboardModel();
-//        db.collection("user").document(firebaseUser.getEmail())
-//                .collection("Laporan")
-//                .orderBy("tanggal")
-//                .startAt(currentDate)
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @RequiresApi(api = Build.VERSION_CODES.N)
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()){
-//                            for (QueryDocumentSnapshot document : task.getResult()){
-//                                if (document.getLong("jenis_kategori").intValue() == 1){
-//                                    dashboardModel.setPemasukan(dashboardModel.getPemasukan() + document.getLong("jumlah").intValue());
-//
-//                                }
-//                                else if (document.getLong("jenis_kategori").intValue() == 2){
-//                                    dashboardModel.setPengeluaran(dashboardModel.getPemasukan() + document.getLong("jumlah").intValue());
-//
-//                                }
-//                            }
-//                            mPengeluarannTextView.setText(formatRupiah(Double.parseDouble(Integer.toString(dashboardModel.getPengeluaran()))));
-//                            mPemasukanTextView.setText(formatRupiah(Double.parseDouble(Integer.toString(dashboardModel.getPemasukan()))));
-//                        }
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.e("TAG", e.getMessage());
-//                    }
-//                });
-//
-//        db.collection("user").document(firebaseUser.getEmail()).get()
-//                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                    @RequiresApi(api = Build.VERSION_CODES.N)
-//                    @Override
-//                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                        if (task.isSuccessful()){
-//                            DocumentSnapshot doc = task.getResult();
-//                            int saldo = doc.getLong("saldo").intValue();
-//                            dashboardModel.setSaldo(saldo);
-//                            mSaldoTextView.setText(formatRupiah(Double.parseDouble(Integer.toString(dashboardModel.getSaldo()))));
-//                        }
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.e("TAG", e.getMessage());
-//                    }
-//                });
-//    }
 
     private void showDateData() {
         Log.e("BUTTON CARI", " MASUK DATE DATA");

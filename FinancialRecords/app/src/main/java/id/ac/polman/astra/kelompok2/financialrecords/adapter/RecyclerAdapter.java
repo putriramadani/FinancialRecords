@@ -65,8 +65,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         KategoriModel kategoriModel = kategoriList.get(position);
-        holder.nama_kategori.setText("Nama                 : "+kategoriModel.getPemasukan());
-        holder.jenis_kategori.setText("Jenis Kategori : " + kategoriModel.getJenis());
+        holder.nama_kategori.setText(kategoriModel.getPemasukan());
+        holder.jenis_kategori.setText(kategoriModel.getJenis());
 
         Log.d("","CEK KEY:"+kategoriModel.getKey());
         Log.d("","CEK POSISI:"+getItemCount());

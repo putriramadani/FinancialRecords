@@ -73,41 +73,6 @@ public class DashboardListFragment extends Fragment {
         return objectKTF;
     }
 
-//    private void showData() {
-//        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-//        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-//        String email = firebaseUser.getEmail();
-//        db.collection("user").document(email)
-//                .collection("Laporan").get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                DashboardModel dashboardModel = new DashboardModel();
-//                                dashboardModel.setJenis_kategori(document.getLong("jenis_kategori").intValue());
-//                                Log.e("Login", "jenis kategori :" + dashboardModel.getJenis_kategori());
-//                                dashboardModel.setJumlah((document.getLong("jumlah").intValue()));
-//                                Log.e("Login", "jumlah :" + dashboardModel.getJumlah());
-//                                dashboardModel.setKategori(document.getString("kategori"));
-//                                Log.e("Login", "kategori :" + dashboardModel.getKategori());
-//                                dashboardModel.setTanggal(document.getDate("tanggal"));
-//                                Log.e("Login", "tanggal :" + dashboardModel.getTanggal());
-//                                listDashboard.add(dashboardModel);
-//                            }
-//                        }
-//                        mAdapter = new LaporanAdapter(listDashboard);
-//                        mRecyclerView.setAdapter(mAdapter);
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.e("TAG", e.getMessage());
-//                    }
-//                });
-//    }
-
     private void showDateData() {
         Log.e("BUTTON CARI", " MASUK DATE DATA");
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -138,6 +103,7 @@ public class DashboardListFragment extends Fragment {
                                 dashboardModel.setJumlah((document.getLong("jumlah").intValue()));
                                 dashboardModel.setKategori(document.getString("kategori"));
                                 dashboardModel.setTanggal(document.getDate("tanggal"));
+                                dashboardModel.setKeterangan(document.getString("keterangan"));
                                 listDashboard.add(dashboardModel);
 
                                 Log.e("BUTTON CARI", " selesai FOR");
@@ -177,6 +143,7 @@ public class DashboardListFragment extends Fragment {
         private TextView mKategoriTextView;
         private TextView mTotalTextView;
         private TextView mTanggalTextView;
+        private TextView mKeteranganTextView;
         private TextView mPemasukanTextView;
         private  TextView mPengeluaranTextView;
 
@@ -185,16 +152,10 @@ public class DashboardListFragment extends Fragment {
         public LaporanHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_dashboard, parent, false));
 
-            //NavHostFragment navHostFragment = (NavHostFragment) getParentFragment();
-            //Fragment parentFragment = (Fragment) navHostFragment.getParentFragment();
-            //parentFragment.getView().findViewById(R.id.)
-
             mKategoriTextView = (TextView) itemView.findViewById(R.id.nama_kategori);
             mTotalTextView = (TextView) itemView.findViewById(R.id.total_kategori);
             mTanggalTextView = (TextView) itemView.findViewById(R.id.tanggal);
-            //mPemasukanTextView = (TextView) parentFragment.getView().findViewById(R.id.nominal_pemasukan);
-            //mPemasukanTextView = (TextView) parentFragment.getView().findViewById(R.id.nominal_pengeluaran);
-
+            mKeteranganTextView = (TextView) itemView.findViewById(R.id.keterangan_kategori);
         }
 
         @RequiresApi(api = Build.VERSION_CODES.N)
@@ -202,19 +163,11 @@ public class DashboardListFragment extends Fragment {
             mDashboardModel = dashboardModel;
             int pemasukan = 0;
             int pengeluaran = 0;
-//            int pemasukan_awal = Integer.parseInt(mPemasukanTextView.getText().toString());
-//            int pengeluaran_awal = Integer.parseInt(mPengeluaranTextView.getText().toString());
-//            if (mDashboardModel.getJenis_kategori() == 1) {
-//                pemasukan = pemasukan_awal + mDashboardModel.getJumlah();
-//            }
-//            else {
-//                pengeluaran = pengeluaran_awal + mDashboardModel.getJumlah();
-//            }
-//            mPemasukanTextView.setText(String.valueOf(pemasukan));
-//            mPengeluaranTextView.setText(String.valueOf(pengeluaran));
+
             mKategoriTextView.setText(mDashboardModel.getKategori());
             mTotalTextView.setText(formatRupiah(Double.parseDouble(String.valueOf(mDashboardModel.getJumlah()))));
             mTanggalTextView.setText(mSimpleDateFormat.format(dashboardModel.getTanggal()));
+            mKeteranganTextView.setText(mDashboardModel.getKeterangan());
         }
     }
 

@@ -14,8 +14,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="25sp"
+            android:textSize="22sp"
             android:text="@string/form_input"
+            android:fontFamily="sans-serif-condensed"
             android:textStyle="bold"
             android:textColor="#FFFFFF"/>
     </LinearLayout>
@@ -26,27 +27,61 @@
         android:background="@drawable/vie_main_bg"
         android:orientation="vertical"
         android:padding="20dp"
-        app:tabTextColor="@color/black">
+        app:tabTextColor="@color/brown">
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="265dp"
             android:layout_height="20dp"
             android:text=" Jenis Kategori"
+            android:fontFamily="sans-serif-condensed"
             android:textColor="@color/orange"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="257dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:background="@color/orange"
-            android:entries="@array/Spinner_items"
-            android:textColor="@color/white"
-            android:layout_marginBottom="10dp"
-            android:textSize="16sp"></Spinner>
+            android:layout_marginTop="5dp"
+            android:background="@color/brown">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="2dp"
+                android:background="@color/white">
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+
+                android:popupBackground="@color/orange"
+                android:popupElevation="5dp"
+
+                android:backgroundTint="@color/brown"
+                android:backgroundTintMode="add"
+
+                android:entries="@array/Spinner_items"
+
+                android:scrollbarSize="40dp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp"></Spinner>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="265dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text=" Nama Kategori"
+            android:textColor="@color/orange"
+            android:textSize="14sp" />
         <EditText
             android:id="@+id/et_nama"
             android:layout_width="match_parent"
@@ -57,8 +92,8 @@
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/orange"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/grey"
             android:textSize="16sp"
             app:layout_constraintHorizontal_bias=".5"
