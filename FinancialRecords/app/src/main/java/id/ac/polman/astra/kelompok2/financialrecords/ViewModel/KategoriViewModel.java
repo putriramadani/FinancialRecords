@@ -40,7 +40,7 @@ public class KategoriViewModel extends ViewModel {
         Log.e("Login", firebaseUser.getEmail() + "Kategori");
 
         if (kategoriModel.getNamakategori().isEmpty())
-            addCategoryLiveData.postValue(new ResponseModel(false, "Category is Empty"));
+            addCategoryLiveData.postValue(new ResponseModel(false, "Category name is Empty"));
         else {
             Log.e("Running", "running");
             //FirebaseAuthHelper.signUp(activity, signUpModel.getEmail(), signUpModel.getPassword()).observe((LifecycleOwner) activity, responseModel -> {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinancialRecords</string>
+    <string name="app">Financial Records</string>
+
+    <!--category-->
+    <string name="form_input">FORM KATEGORI</string>
+    <string-array name="Spinner_items">
+        <item>Pemasukan</item>
+        <item>Pengeluaran</item>
+    </string-array>
+    <string name="save">Simpan</string>
+    <string name="update">Ubah</string>
+    <string name="categoryname"> Nama Kategori</string>
+    <string name="categorytype"> Tipe Kategori</string>
+
+    <!--bottom navigation view-->
+    <string name="dashboardbtn">Beranda</string>
+    <string name="categorybtn">Kategori</string>
+    <string name="reportbtn">Laporan</string>
+
+    <!--main menu-->
+    <string name="myprofile">Profil Saya</string>
+    <string name="logout">Keluar</string>
+
+    <!--login-->
+    <string name="welcometo">Selamat datang di Financial Records</string>
+    <string name="email">Email</string>
+    <string name="password">Kata Sandi</string>
+    <string name="loginbtn">Masuk</string>
+
+    <!--signup-->
+    <string name="name">Nama</string>
+    <string name="address">Alamat</string>
+    <string name="repassword">Konfirmasi Kata Sandi</string>
+    <string name="signupbtn">Daftar</string>
+
+    <!--dashboard-->
+    <string name="balance">Saldo</string>
+    <string name="date">Tanggal</string>
+    <string name="income">Pemasukan</string>
+    <string name="expense">Pengeluaran</string>
+
+    <!--Laporan-->
+    <string name="startdate">Tanggal mulai</string>
+    <string name="enddate">Tanggal Selesai</string>
+    <string name="totalincome">Total Pemasukan</string>
+    <string name="totalexpense">Total Pengeluaran</string>
+    <string name="difference">Selisih</string>
+
+    <!--landing page -->
+    <string name="skip">Lewati</string>
+
+    <string name="hello">Halo!</string>
+    <string name="welcome">Selamat datang di </string>
+
+    <string name="easyand">Mudah dan</string>
+    <string name="comfortto">nyaman untuk </string>
+    <string name="recordyour">mencatat pengeluaran harianmu</string>
+
+    <string name="enjoymanage">Nikmati mengelola</string>
+    <string name="yourfinance">keuanganmu</string>
+    <string name="withfr">bersama Financial Records</string>
+</resources>
