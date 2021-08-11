@@ -31,18 +31,16 @@ public class SignupTabFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.signup_tab_fragment, container, false);
         objectLTF = inflater.inflate(R.layout.signup_tab_fragment, container, false);
 
-        mEmail = objectLTF.findViewById(R.id.signup_email);
-        mPass = objectLTF.findViewById(R.id.signup_pass);
         mName = objectLTF.findViewById(R.id.signup_name);
         mAddress = objectLTF.findViewById(R.id.signup_address);
+        mEmail = objectLTF.findViewById(R.id.signup_email);
+        mPass = objectLTF.findViewById(R.id.signup_pass);
         mRepass = objectLTF.findViewById(R.id.signup_repass);
         mSignUp = objectLTF.findViewById(R.id.button);
         mShowPass = objectLTF.findViewById(R.id.show_pass_btn);
         mShowRepass = objectLTF.findViewById(R.id.show_repass_btn);
-
 
 //        mEmail.setTranslationX(800);
 //        mPass.setTranslationX(800);
@@ -111,10 +109,10 @@ public class SignupTabFragment extends Fragment {
                 progressDialog.setMessage("Please Wait");
                 progressDialog.show();
 
-                mEmail = objectLTF.findViewById(R.id.signup_email);
-                mPass = objectLTF.findViewById(R.id.signup_pass);
                 mName = objectLTF.findViewById(R.id.signup_name);
+                mEmail = objectLTF.findViewById(R.id.signup_email);
                 mAddress = objectLTF.findViewById(R.id.signup_address);
+                mPass = objectLTF.findViewById(R.id.signup_pass);
                 mRepass = objectLTF.findViewById(R.id.signup_repass);
                 mSignUp = objectLTF.findViewById(R.id.button);
                 SignUpModel signUpModel = new SignUpModel(mName.getText().toString(), mEmail.getText().toString(),
