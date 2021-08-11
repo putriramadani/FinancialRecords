@@ -75,6 +75,7 @@ public class LaporanTabFragment extends Fragment {
     Calendar calendar = Calendar.getInstance();
     Locale id = new Locale("in","ID");
     SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("dd-MM-YYYY", id);
+    DashboardModel dashboardModel = new DashboardModel();
 
     Date date_minimal;
     Date date_maximal;
@@ -365,13 +366,27 @@ public class LaporanTabFragment extends Fragment {
                         total_pengeluaran = objectKTF.findViewById(R.id.total_pengeluaran);
                         total_pengeluaran.setText(formatRupiah(Double.parseDouble(totalpen)));
 
-                        //SELISIH
-                        int totpem = laporanModel.getTotal_pemasukan();
-                        int totpen = laporanModel.getTotal_pengeluaran();
-                        int totsel = totpem - totpen;
-                        Log.e("SELISIH", "Selisih :" + String.valueOf(totsel));
-                        selisih = objectKTF.findViewById(R.id.selisih);
-                        selisih.setText(formatRupiah(Double.parseDouble(String.valueOf(totsel))));
+                        db.collection("user").document(firebaseUser.getEmail()).get()
+                                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @RequiresApi(api = Build.VERSION_CODES.N)
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if (task.isSuccessful()){
+                                            DocumentSnapshot doc = task.getResult();
+                                            int saldo = doc.getLong("saldo").intValue();
+                                            dashboardModel.setSaldo(saldo);
+//                                                mSaldoTextView = (TextView) objectDTF.findViewById(R.id.saldo);
+//                                                mSaldoTextView.setText(formatRupiah(Double.parseDouble(Integer.toString(dashboardModel.getSaldo()))));
+                                            selisih = objectKTF.findViewById(R.id.selisih);
+                                            selisih.setText(formatRupiah(Double.parseDouble(Integer.toString(dashboardModel.getSaldo()))));
+                                        }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.e("TAG", e.getMessage());
+                            }
+                        });
 
                     }
                 })
