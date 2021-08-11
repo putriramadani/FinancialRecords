@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -50,6 +51,7 @@ public class DashboardListFragment extends Fragment {
     RecyclerView.LayoutManager mLayoutManager;
     FirebaseFirestore db;
     LaporanAdapter mAdapter;
+    FloatingActionButton mButton;
 
     Calendar calendar = Calendar.getInstance();
     Locale id = new Locale("in","ID");
@@ -67,6 +69,15 @@ public class DashboardListFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mButton = objectKTF.findViewById(R.id.transaksi_tambah);
+
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransaksiDialogFragment dialogFragment = new TransaksiDialogFragment();
+                dialogFragment.show(getFragmentManager(), "Form");
+            }
+        });
 
         showDateData();
 

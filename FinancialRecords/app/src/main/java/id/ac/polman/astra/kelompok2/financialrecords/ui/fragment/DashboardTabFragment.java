@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -57,6 +58,7 @@ public class DashboardTabFragment extends Fragment {
     private TextView mPemasukanTextView;
     private TextView mPengeluarannTextView;
     private TextView mSaldoTextView;
+
     private TextView mTanggalTextView;
 
     Calendar calendar = Calendar.getInstance();
@@ -64,6 +66,7 @@ public class DashboardTabFragment extends Fragment {
     SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("EEE, dd/MM/yyyy", id);
     Date currentDate = calendar.getTime();
     DashboardModel dashboardModel = new DashboardModel();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,7 +81,13 @@ public class DashboardTabFragment extends Fragment {
 
         mView = objectDTF.findViewById(R.id.header_dashboard);
 
+
+
+
+        showData();
+
         showDateData();
+
 
         return objectDTF;
     }
@@ -131,7 +140,6 @@ public class DashboardTabFragment extends Fragment {
                                     listjumkur = listjumkur + listjumlahkur;
                                     Log.e("LAPORAN LIST KURANG", "listjum :" + listjumkur);
                                 }
-
                             }
                             dashboardModel.setPemasukan(listjumtam);
                             String totalpem = String.valueOf(dashboardModel.getPemasukan());
@@ -178,6 +186,66 @@ public class DashboardTabFragment extends Fragment {
                         Log.e("TAG", e.getMessage());
                     }
                 });
+    }
+                                       
+        private void showData(){
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        db.collection("user").document(firebaseUser.getEmail())
+                .collection("Laporan").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()){
+                                if (document.getLong("jenis_kategori").intValue() == 1){
+                                    dashboardModel.setPemasukan(dashboardModel.getPemasukan() + document.getLong("jumlah").intValue());
+
+                                }
+                                else if (document.getLong("jenis_kategori").intValue() == 2){
+                                    dashboardModel.setPengeluaran(dashboardModel.getPengeluaran() + document.getLong("jumlah").intValue());
+
+                                }
+                            }
+                            mPengeluarannTextView.setText(Integer.toString(dashboardModel.getPengeluaran()));
+                            mPemasukanTextView.setText(Integer.toString(dashboardModel.getPemasukan()));
+                            setDashboardModel(dashboardModel);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("TAG", e.getMessage());
+                    }
+                });
+
+        db.collection("user").document(firebaseUser.getEmail()).get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()){
+                            DocumentSnapshot doc = task.getResult();
+                            int saldo = doc.getLong("saldo").intValue();
+                            dashboardModel.setSaldo(saldo);
+                            mSaldoTextView.setText(Integer.toString(dashboardModel.getSaldo()));
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("TAG", e.getMessage());
+                    }
+                });
+    }                             
+
+    public void setDashboardModel(DashboardModel dashboardModel){
+        this.dashboardModel = dashboardModel;
+    }
+
+    public DashboardModel getDashboardModel(){
+        return this.dashboardModel;
     }
 
     private class DashboardHolder extends RecyclerView.ViewHolder {
