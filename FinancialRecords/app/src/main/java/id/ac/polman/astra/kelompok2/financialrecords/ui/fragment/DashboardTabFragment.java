@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -46,22 +47,7 @@ public class DashboardTabFragment extends Fragment {
     private TextView mPemasukanTextView;
     private TextView mPengeluarannTextView;
     private TextView mSaldoTextView;
-
-//    @Override
-//    protected void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.dashboard_tab_fragment);
-//        firebaseAuth = FirebaseAuth.getInstance();
-//
-//        //checkUser();
-//
-//        FragmentManager fm = getSupportFragmentManager();
-//        Fragment fragment = fm.findFragmentById(R.id.fragment_container);
-//        if (fragment == null){
-//            fragment = DashboardListFragment.newInstance();
-//            fm.beginTransaction().add(R.id.fragment_container, fragment).commit();
-//        }
-//    }
+    private DashboardModel dashboardModel = new DashboardModel();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -74,6 +60,8 @@ public class DashboardTabFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         mView = objectDTF.findViewById(R.id.header_dashboard);
+
+
 
         showData();
 
@@ -90,7 +78,7 @@ public class DashboardTabFragment extends Fragment {
     private void showData(){
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        DashboardModel dashboardModel = new DashboardModel();
+
         db.collection("user").document(firebaseUser.getEmail())
                 .collection("Laporan").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -103,12 +91,13 @@ public class DashboardTabFragment extends Fragment {
 
                                 }
                                 else if (document.getLong("jenis_kategori").intValue() == 2){
-                                    dashboardModel.setPengeluaran(dashboardModel.getPemasukan() + document.getLong("jumlah").intValue());
+                                    dashboardModel.setPengeluaran(dashboardModel.getPengeluaran() + document.getLong("jumlah").intValue());
 
                                 }
                             }
                             mPengeluarannTextView.setText(Integer.toString(dashboardModel.getPengeluaran()));
                             mPemasukanTextView.setText(Integer.toString(dashboardModel.getPemasukan()));
+                            setDashboardModel(dashboardModel);
                         }
                     }
                 })
@@ -136,6 +125,14 @@ public class DashboardTabFragment extends Fragment {
                         Log.e("TAG", e.getMessage());
                     }
                 });
+    }
+
+    public void setDashboardModel(DashboardModel dashboardModel){
+        this.dashboardModel = dashboardModel;
+    }
+
+    public DashboardModel getDashboardModel(){
+        return this.dashboardModel;
     }
 
     private class DashboardHolder extends RecyclerView.ViewHolder {

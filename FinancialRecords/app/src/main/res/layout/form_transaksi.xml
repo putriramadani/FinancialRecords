@@ -61,17 +61,33 @@
             android:layout_height="40dp"
             android:layout_margin="5dp"
             android:background="@color/orange"
-            android:entries="@array/Spinner_items"
             android:textColor="@color/white"
             android:layout_marginBottom="10dp"
             android:textSize="16sp"></Spinner>
 
         <EditText
-            android:id="@+id/et_nama"
+            android:id="@+id/txt_jumlah"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_bg"
-            android:hint="Nama Kategori"
+            android:hint="Jumlah"
+            android:inputType="textCapSentences"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/orange"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            app:layout_constraintHorizontal_bias=".5"
+            app:layout_constraintVertical_bias=".3" />
+
+        <EditText
+            android:id="@+id/txt_keterangan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_bg"
+            android:hint="Keterangan"
             android:inputType="textCapSentences"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
