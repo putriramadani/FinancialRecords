@@ -81,11 +81,6 @@ public class DashboardTabFragment extends Fragment {
 
         mView = objectDTF.findViewById(R.id.header_dashboard);
 
-
-
-
-        showData();
-
         showDateData();
 
 
@@ -177,6 +172,7 @@ public class DashboardTabFragment extends Fragment {
                             DocumentSnapshot doc = task.getResult();
                             int saldo = doc.getLong("saldo").intValue();
                             dashboardModel.setSaldo(saldo);
+                            mSaldoTextView = (TextView) objectDTF.findViewById(R.id.saldo);
                             mSaldoTextView.setText(formatRupiah(Double.parseDouble(Integer.toString(dashboardModel.getSaldo()))));
                         }
                     }
@@ -186,62 +182,6 @@ public class DashboardTabFragment extends Fragment {
                         Log.e("TAG", e.getMessage());
                     }
                 });
-    }
-                                       
-        private void showData(){
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-
-        db.collection("user").document(firebaseUser.getEmail())
-                .collection("Laporan").get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
-                            for (QueryDocumentSnapshot document : task.getResult()){
-                                if (document.getLong("jenis_kategori").intValue() == 1){
-                                    dashboardModel.setPemasukan(dashboardModel.getPemasukan() + document.getLong("jumlah").intValue());
-
-                                }
-                                else if (document.getLong("jenis_kategori").intValue() == 2){
-                                    dashboardModel.setPengeluaran(dashboardModel.getPengeluaran() + document.getLong("jumlah").intValue());
-
-                                }
-                            }
-                            mPengeluarannTextView.setText(Integer.toString(dashboardModel.getPengeluaran()));
-                            mPemasukanTextView.setText(Integer.toString(dashboardModel.getPemasukan()));
-                            setDashboardModel(dashboardModel);
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("TAG", e.getMessage());
-                    }
-                });
-
-        db.collection("user").document(firebaseUser.getEmail()).get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()){
-                            DocumentSnapshot doc = task.getResult();
-                            int saldo = doc.getLong("saldo").intValue();
-                            dashboardModel.setSaldo(saldo);
-                            mSaldoTextView.setText(Integer.toString(dashboardModel.getSaldo()));
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("TAG", e.getMessage());
-                    }
-                });
-    }                             
-
-    public void setDashboardModel(DashboardModel dashboardModel){
-        this.dashboardModel = dashboardModel;
     }
 
     public DashboardModel getDashboardModel(){

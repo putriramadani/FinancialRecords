@@ -58,11 +58,13 @@ public class TransaksiDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         objectLTF = inflater.inflate(R.layout.form_transaksi, container, false);
+
         mJumlahEditText = objectLTF.findViewById(R.id.txt_jumlah);
         mKeteranganEditText = objectLTF.findViewById(R.id.txt_keterangan);
         mJenisSpinner = objectLTF.findViewById(R.id.ddl_jenis);
         mKategoriSpinner = objectLTF.findViewById(R.id.ddl_kategori);
         mButton = objectLTF.findViewById(R.id.btn_simpan);
+
         db = FirebaseFirestore.getInstance();
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();

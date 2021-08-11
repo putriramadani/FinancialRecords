@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="25sp"
-            android:text="Form Transaksi"
+            android:text="@string/formtransaksi"
             android:textStyle="bold"
             android:textColor="#FFFFFF"/>
     </LinearLayout>
@@ -32,7 +32,7 @@
             android:id="@+id/textView5"
             android:layout_width="265dp"
             android:layout_height="20dp"
-            android:text=" Jenis Kategori"
+            android:text="@string/categorytype"
             android:textColor="@color/orange"
             android:textSize="16sp" />
 
@@ -51,7 +51,7 @@
             android:layout_width="265dp"
             android:layout_height="20dp"
             android:layout_marginTop="10dp"
-            android:text=" Kategori"
+            android:text="@string/categoryname"
             android:textColor="@color/orange"
             android:textSize="16sp" />
 
@@ -70,8 +70,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_bg"
-            android:hint="Jumlah"
-            android:inputType="textCapSentences"
+            android:hint="@string/nominal"
+            android:inputType="number"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_bg"
-            android:hint="Keterangan"
+            android:hint="@string/description"
             android:inputType="textCapSentences"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
@@ -105,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/button_bg"
-            android:text="Simpan"
+            android:text="@string/save"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />

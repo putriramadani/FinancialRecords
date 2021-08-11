@@ -60,21 +60,46 @@ public class TransaksiViewModel extends ViewModel {
                 transaksi.put("tanggal", new Date());
 
                 db.collection("user").document(firebaseUser.getEmail())
-                        .collection("Laporan").add(transaksi).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        saveTransaksiLiveData.postValue(new ResponseModel(true, "Success"));
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        saveTransaksiLiveData.postValue(new ResponseModel(true, e.getMessage()));
-                    }
-                });
+                    .collection("Laporan").add(transaksi)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            saveTransaksiLiveData.postValue(new ResponseModel(true, "Success"));
+
+                            //////
+                            db.collection("user")
+                            .document(firebaseUser.getEmail()).get()
+                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                                    DocumentSnapshot document = task.getResult();
+                                    Map<String, Object> user = new HashMap<>();
+
+                                    DashboardModel dashboardModel = new DashboardModel();
+                                    dashboardModel.setSaldo(document.getLong("saldo").intValue());
+
+                                    Log.e("TRANSAKSI SALDO", "SALDO AWAL : " + dashboardModel.getSaldo());
+                                    updateSaldo(transaksiModel.getJenis_kategori(), transaksiModel.getJumlah(), dashboardModel.getSaldo());
+                                    Log.e("UPDATE SALDO", String.valueOf(transaksiModel.getJenis_kategori()) + " " + String.valueOf(transaksiModel.getJumlah()) + " " + String.valueOf(dashboardModel.getSaldo()));
+                                }
+                            })
+                            .addOnFailureListener(e -> {
+
+                            });
+                            /////
+                            //updateSaldo(transaksiModel.getJenis_kategori(), transaksiModel.getJumlah(), dashboardModel.getSaldo());
+                        }
+                    })
+///////////////
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            saveTransaksiLiveData.postValue(new ResponseModel(true, e.getMessage()));
+                        }
+                    });
+                }
             }
-        }
-        DashboardModel dashboardModel = mDashboardTabFragment.getDashboardModel();
-        updateSaldo(transaksiModel.getJenis_kategori(), transaksiModel.getJumlah(), dashboardModel.getSaldo());
         return saveTransaksiLiveData;
     }
 
@@ -91,7 +116,14 @@ public class TransaksiViewModel extends ViewModel {
         }
 
         db.collection("user").document(firebaseUser.getEmail())
-                .update("saldo", saldo).addOnFailureListener(new OnFailureListener() {
+                .update("saldo", saldo)
+            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Log.e("SALDO BERHASIL", String.valueOf(saldo));
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.e("TAG", e.getMessage());
