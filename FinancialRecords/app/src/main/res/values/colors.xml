@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#ffc93b</color>
+    <color name="orenji">#ffc93b</color>
+    <color name="purple_200">#a3812c</color>
     <color name="teal_700">#FF018786</color>
 
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574b</color>
-    <color name="colorAccent">#ffc93b</color>
+    <color name="colorAccent">#a3812c</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -13,7 +14,7 @@
     <color name="pink">#FFf469a9</color>
     <color name="blue">#FF88bef5</color>
     <color name="grey">#FFD3D3D3</color>
-    <color name="orange">#ffc93b</color>
+    <color name="orange">#a3812c</color>
     <color name="brown">#a3812c</color>
 </resources>
 

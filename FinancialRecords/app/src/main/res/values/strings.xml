@@ -1,8 +1,64 @@
 <resources>
     <string name="app_name">FinancialRecords</string>
-    <string name="form_input">Form Kategori</string>
+    <string name="app">Financial Records</string>
+
+    <!--category-->
+    <string name="form_input">CATEGORY FORM</string>
     <string-array name="Spinner_items">
         <item>Pemasukan</item>
         <item>Pengeluaran</item>
     </string-array>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="categoryname"> Category Name</string>
+    <string name="categorytype"> Category Type</string>
+
+    <!--bottom navigation view-->
+    <string name="dashboardbtn">Dashboard</string>
+    <string name="categorybtn">Category</string>
+    <string name="reportbtn">Report</string>
+
+    <!--main menu-->
+    <string name="myprofile">My Profile</string>
+    <string name="logout">Log Out</string>
+
+    <!--login-->
+    <string name="welcometo">Welcome to Financial Records</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="loginbtn">Log In</string>
+
+    <!--signup-->
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="repassword">Re Password</string>
+    <string name="signupbtn">Sign Up</string>
+
+    <!--dashboard-->
+    <string name="balance">Balance</string>
+    <string name="date">Date</string>
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
+
+    <!--Laporan-->
+    <string name="startdate">Start Date</string>
+    <string name="enddate">End Date</string>
+    <string name="totalincome">Total Income</string>
+    <string name="totalexpense">Total Expense</string>
+    <string name="difference">Difference</string>
+
+    <!--landing page -->
+    <string name="skip">Skip</string>
+
+    <string name="hello">Hello!</string>
+    <string name="welcome">Welcome to </string>
+
+    <string name="easyand">Easy and</string>
+    <string name="comfortto">Comfort to</string>
+    <string name="recordyour">record your daily finance</string>
+
+    <string name="enjoymanage">enjoy Manage</string>
+    <string name="yourfinance">Your Finance</string>
+    <string name="withfr">with Financial Records</string>
+
 </resources>

@@ -115,7 +115,15 @@ public class LaporanTabFragment extends Fragment {
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         calendar.set(year, month, dayOfMonth);
                         input_minimal.setText(mSimpleDateFormat.format(calendar.getTime()));
+                        //supaya bisa pas date today
+                        calendar.add(Calendar.DATE, -1);
                         date_minimal = calendar.getTime();
+
+//                        private Date yesterday() {
+//                            final Calendar cal = Calendar.getInstance();
+//                            cal.add(Calendar.DATE, -1);
+//                            return cal.getTime();
+//                        }
 
                         String input1 = input_minimal.getText().toString();
                         String input2 = input_maximal.getText().toString();
@@ -196,6 +204,7 @@ public class LaporanTabFragment extends Fragment {
                                 LaporanModel laporanModel = new LaporanModel();
                                 laporanModel.setJenis_kategori(document.getLong("jenis_kategori").intValue());
                                 laporanModel.setJumlah((document.getLong("jumlah").intValue()));
+                                laporanModel.setKeterangan(document.getString("keterangan"));
                                 laporanModel.setKategori(document.getString("kategori"));
                                 laporanModel.setTanggal(document.getDate("tanggal"));
                                 listLaporan.add(laporanModel);
@@ -225,7 +234,7 @@ public class LaporanTabFragment extends Fragment {
                             Log.e("LAPORAN", "Total Pemasukan :" + totalpem);
 
                             total_pemasukan = objectKTF.findViewById(R.id.total_pemasukan);
-                            total_pemasukan.setText("Total Pemasukan                              " + formatRupiah(Double.parseDouble(totalpem)));
+                            total_pemasukan.setText(formatRupiah(Double.parseDouble(totalpem)));
 
                             laporanModel.setTotal_pengeluaran(listjumkur);
                             String totalpen = String.valueOf(laporanModel.getTotal_pengeluaran());
@@ -233,7 +242,7 @@ public class LaporanTabFragment extends Fragment {
                             Log.e("LAPORAN", "Total Pemasukan di pengeluaran :" + String.valueOf(laporanModel.getTotal_pemasukan()));
 
                             total_pengeluaran = objectKTF.findViewById(R.id.total_pengeluaran);
-                            total_pengeluaran.setText("Total Pengeluaran                            " + formatRupiah(Double.parseDouble(totalpen)));
+                            total_pengeluaran.setText(formatRupiah(Double.parseDouble(totalpen)));
 
                             //SELISIH
                             int totpem = laporanModel.getTotal_pemasukan();
@@ -241,7 +250,7 @@ public class LaporanTabFragment extends Fragment {
                             int totsel = totpem - totpen;
                             Log.e("SELISIH", "Selisih :" + String.valueOf(totsel));
                             selisih = objectKTF.findViewById(R.id.selisih);
-                            selisih.setText("Selisih                                                " + formatRupiah(Double.parseDouble(String.valueOf(totsel))));
+                            selisih.setText(formatRupiah(Double.parseDouble(String.valueOf(totsel))));
                         }
                         mLaporanAdapter = new LaporanAdapter(LaporanTabFragment.this, listLaporan);
                         rv_view_laporan.setAdapter(mLaporanAdapter);
@@ -262,6 +271,7 @@ public class LaporanTabFragment extends Fragment {
 
         db.collection("user").document(email)
                 .collection("Laporan")
+                .orderBy("tanggal", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -270,17 +280,10 @@ public class LaporanTabFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 LaporanModel laporanModel = new LaporanModel();
                                 laporanModel.setJenis_kategori(document.getLong("jenis_kategori").intValue());
-                                Log.e("Login", "jenis kategori :" + laporanModel.getJenis_kategori());
-
                                 laporanModel.setJumlah((document.getLong("jumlah").intValue()));
-                                Log.e("Login", "jumlah :" + laporanModel.getJumlah());
-
                                 laporanModel.setKategori(document.getString("kategori"));
-                                Log.e("Login", "kategori :" + laporanModel.getKategori());
-
+                                laporanModel.setKeterangan(document.getString("keterangan"));
                                 laporanModel.setTanggal(document.getDate("tanggal"));
-                                Log.e("Login", "tanggal :" + laporanModel.getTanggal());
-
                                 listLaporan.add(laporanModel);
                             }
                         }
@@ -325,7 +328,7 @@ public class LaporanTabFragment extends Fragment {
                     Log.e("LAPORAN", "Total Pemasukan :" + totalpem);
 
                     total_pemasukan = objectKTF.findViewById(R.id.total_pemasukan);
-                    total_pemasukan.setText("Total Pemasukan                              "+formatRupiah(Double.parseDouble(totalpem)));
+                    total_pemasukan.setText(formatRupiah(Double.parseDouble(totalpem)));
                 }
             })
             .addOnFailureListener(new OnFailureListener() {
@@ -360,7 +363,7 @@ public class LaporanTabFragment extends Fragment {
                         Log.e("LAPORAN", "Total Pemasukan di pengeluaran :" + String.valueOf(laporanModel.getTotal_pemasukan()));
 
                         total_pengeluaran = objectKTF.findViewById(R.id.total_pengeluaran);
-                        total_pengeluaran.setText("Total Pengeluaran                            "+formatRupiah(Double.parseDouble(totalpen)));
+                        total_pengeluaran.setText(formatRupiah(Double.parseDouble(totalpen)));
 
                         //SELISIH
                         int totpem = laporanModel.getTotal_pemasukan();
@@ -368,7 +371,7 @@ public class LaporanTabFragment extends Fragment {
                         int totsel = totpem - totpen;
                         Log.e("SELISIH", "Selisih :" + String.valueOf(totsel));
                         selisih = objectKTF.findViewById(R.id.selisih);
-                        selisih.setText("Selisih                                                "+formatRupiah(Double.parseDouble(String.valueOf(totsel))));
+                        selisih.setText(formatRupiah(Double.parseDouble(String.valueOf(totsel))));
 
                     }
                 })

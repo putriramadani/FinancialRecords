@@ -30,7 +30,7 @@
                 android:gravity="center"
                 android:textAlignment="gravity"
                 android:textSize="14dp"
-                android:hint="Start Date" />
+                android:hint="@string/startdate" />
 
             <Button
                 android:drawableRight="@drawable/ic_baseline_calendar_white_24"
@@ -58,7 +58,7 @@
                 android:textSize="14dp"
                 android:gravity="center"
                 android:textAlignment="gravity"
-                android:hint="End Date" />
+                android:hint="@string/enddate" />
 
             <Button
                 android:drawableRight="@drawable/ic_baseline_calendar_white_24"
@@ -98,8 +98,14 @@
         android:layout_marginBottom="10dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
-        android:backgroundTint="@color/orange"
+        android:backgroundTint="@color/brown"
         android:orientation="vertical">
+
+<!--///////////////-->
+
+
+<!--        /////////////////////////////-->
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,50 +113,105 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_weight="1"
-                android:paddingStart="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingEnd="10dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                android:layout_height="140dp"
                 android:layout_marginStart="10dp"
-                android:background="@color/orange">
+                android:layout_weight="1"
+                android:background="@drawable/bg"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp">
 
                 <TextView
-                    android:id="@+id/total_pemasukan"
-                    android:padding="5dp"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:layout_marginTop="8dp"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
-                    android:text="Total Pemasukan"/>
-
-                <TextView
-                    android:id="@+id/total_pengeluaran"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="14dp"
                     android:padding="5dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Total Pengeluaran"/>
+                    android:text="@string/totalincome"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/selisih"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:padding="5dp"
+                    android:text="@string/totalexpense"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
                     android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:padding="5dp"
-                    android:text="Selisih"/>
+                    android:text="@string/difference"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg"
+                android:orientation="vertical"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/total_pemasukan"
+                    android:layout_width="138dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:text="Rp0"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/total_pengeluaran"
+                    android:layout_width="139dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:text="Rp0"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/selisih"
+                    android:layout_width="138dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:text="Rp0"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

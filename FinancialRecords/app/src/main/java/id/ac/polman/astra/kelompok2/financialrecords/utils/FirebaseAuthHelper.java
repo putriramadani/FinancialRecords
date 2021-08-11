@@ -35,8 +35,7 @@ public class FirebaseAuthHelper {
         MutableLiveData<ResponseModel> authLiveData = new MutableLiveData<>();
 
         // sign up account to firebase
-        auth
-                .createUserWithEmailAndPassword(email, password)
+        auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity, task -> {
                     if (task.isSuccessful()) {
                         authLiveData.postValue(new ResponseModel(true, "Sign up is success"));
@@ -52,8 +51,7 @@ public class FirebaseAuthHelper {
         MutableLiveData<ResponseModel> authLiveData = new MutableLiveData<>();
 
         // login to firebase
-        auth
-                .signInWithEmailAndPassword(email, password)
+        auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(activity, (OnCompleteListener<AuthResult>) task -> {
                     if (task.isSuccessful()) {
                         authLiveData.postValue(new ResponseModel(true, "Success"));

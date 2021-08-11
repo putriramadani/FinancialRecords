@@ -41,10 +41,15 @@ public class SignUpViewModel extends ViewModel {
         FirebaseAnalyticsHelper analytics = new FirebaseAnalyticsHelper(activity);
         analytics.logEventUserLogin(signUpModel.getEmail());
 
-        if (signUpModel.getEmail().isEmpty())
-            signUpLiveData.postValue(new ResponseModel(false, "Email is Empty"));
+        if (signUpModel.getNama().isEmpty() && signUpModel.getAlamat().isEmpty() &&
+                signUpModel.getEmail().isEmpty() && signUpModel.getPassword().isEmpty() &&signUpModel.getRePassword().isEmpty())
+            signUpLiveData.postValue(new ResponseModel(false, "Data cannot be Empty"));
+        else if (signUpModel.getNama().isEmpty())
+            signUpLiveData.postValue(new ResponseModel(false, "Name is Empty"));
         else if (signUpModel.getAlamat().isEmpty())
             signUpLiveData.postValue(new ResponseModel(false, "Address is Empty"));
+        else if (signUpModel.getEmail().isEmpty())
+            signUpLiveData.postValue(new ResponseModel(false, "Email is Empty"));
         else if (signUpModel.getPassword().isEmpty())
             signUpLiveData.postValue(new ResponseModel(false, "Password is Empty"));
         else if (signUpModel.getRePassword().isEmpty())
@@ -127,22 +132,6 @@ public class SignUpViewModel extends ViewModel {
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             DocumentSnapshot document = task.getResult();
                             Map<String, Object> user = new HashMap<>();
-
-//                            String nama = (String) document.get("nama");
-//                            String alamat = (String) document.get("alamat");
-
-//                            List<String> pemasukan = new ArrayList<>();
-//                            List<String> pengeluaran = new ArrayList<>();
-//
-//                            //get all data
-//                            List<String> listpem = (List<String>) document.get("pemasukan");
-//                            for (int i = 0; i < listpem.size(); i++) {
-//                                pemasukan.add(i, listpem.get(i));
-//                            }
-//                            List<String> listpen = (List<String>) document.get("pengeluaran");
-//                            for (int i = 0; i < listpen.size(); i++) {
-//                                pengeluaran.add(i, listpen.get(i));
-//                            }
 
                             String nama = signUpModel.getNama();
                             String alamat = signUpModel.getAlamat();
