@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">FinancialRecords</string>
     <string name="app">Financial Records</string>
+    <string name="formtransaksi">TRANSACTION FORM</string>
+    <string name="nominal">Nominal</string>
+    <string name="description">Description</string>
 
     <!--category-->
     <string name="form_input">CATEGORY FORM</string>

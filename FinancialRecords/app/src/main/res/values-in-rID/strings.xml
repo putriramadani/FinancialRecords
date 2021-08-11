@@ -2,6 +2,9 @@
 <resources>
     <string name="app_name">FinancialRecords</string>
     <string name="app">Financial Records</string>
+    <string name="formtransaksi">FORM TRANSAKSI</string>
+    <string name="nominal">Nominal</string>
+    <string name="description">Keterangan</string>
 
     <!--category-->
     <string name="form_input">FORM KATEGORI</string>
