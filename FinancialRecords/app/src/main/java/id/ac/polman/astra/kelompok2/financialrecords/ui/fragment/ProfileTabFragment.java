@@ -93,40 +93,4 @@ public class  ProfileTabFragment extends Fragment {
         return  objectLTF;
     }
 }
-//    //firebase auth
-//    private FirebaseAuth firebaseAuth;
-//
-//    TextView mEmailTv;
-//    private View objectLTF;
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        objectLTF = inflater.inflate(R.layout.profile_tab_fragment, container, false);
-//
-//        //init firebase auth
-//        firebaseAuth = FirebaseAuth.getInstance();
-//        //checkUser();
-//
-//        return objectLTF;
-//    }
-//
-////    private void checkUser() {
-////        //check if user is not loggedin the move to login activity
-////
-////        mEmailTv = objectLTF.findViewById(R.id.emailTv);
-////
-////        //get current user
-////        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-////        if (firebaseUser == null){
-////            //user not loggedin, move to login screen
-////            Intent intent = new Intent(getActivity(), LoginActivity.class);
-////            startActivity(intent);
-////        }
-////        else{
-////            //user logged in, get info
-////            String email = firebaseUser.getEmail();
-////            //set to email tv
-////            mEmailTv.setText(email);
-////        }
-////    }
-//}
+
