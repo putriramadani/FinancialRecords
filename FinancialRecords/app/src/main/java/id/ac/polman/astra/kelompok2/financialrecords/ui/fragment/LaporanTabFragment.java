@@ -48,6 +48,7 @@ import id.ac.polman.astra.kelompok2.financialrecords.adapter.RecyclerAdapter;
 import id.ac.polman.astra.kelompok2.financialrecords.model.DashboardModel;
 import id.ac.polman.astra.kelompok2.financialrecords.model.KategoriModel;
 import id.ac.polman.astra.kelompok2.financialrecords.model.LaporanModel;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.activity.HomeActivity;
 import id.ac.polman.astra.kelompok2.financialrecords.utils.Validation;
 
 public class LaporanTabFragment extends Fragment {
@@ -360,8 +361,6 @@ public class LaporanTabFragment extends Fragment {
 
                         laporanModel.setTotal_pengeluaran(listjum);
                         String totalpen = String.valueOf(laporanModel.getTotal_pengeluaran());
-                        Log.e("LAPORAN", "Total Pengeluaran :" + totalpen);
-                        Log.e("LAPORAN", "Total Pemasukan di pengeluaran :" + String.valueOf(laporanModel.getTotal_pemasukan()));
 
                         total_pengeluaran = objectKTF.findViewById(R.id.total_pengeluaran);
                         total_pengeluaran.setText(formatRupiah(Double.parseDouble(totalpen)));
@@ -375,8 +374,7 @@ public class LaporanTabFragment extends Fragment {
                                             DocumentSnapshot doc = task.getResult();
                                             int saldo = doc.getLong("saldo").intValue();
                                             dashboardModel.setSaldo(saldo);
-//                                                mSaldoTextView = (TextView) objectDTF.findViewById(R.id.saldo);
-//                                                mSaldoTextView.setText(formatRupiah(Double.parseDouble(Integer.toString(dashboardModel.getSaldo()))));
+
                                             selisih = objectKTF.findViewById(R.id.selisih);
                                             selisih.setText(formatRupiah(Double.parseDouble(Integer.toString(dashboardModel.getSaldo()))));
                                         }
@@ -396,6 +394,7 @@ public class LaporanTabFragment extends Fragment {
                         Log.e("TAG", e.getMessage());
                     }
                 });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

@@ -34,6 +34,7 @@ import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.KategoriDialogF
 import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.KategoriTabFragment;
 import id.ac.polman.astra.kelompok2.financialrecords.R;
 import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.LaporanTabFragment;
+import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.PiechartTabFragment;
 import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.ProfileTabFragment;
 import id.ac.polman.astra.kelompok2.financialrecords.ui.fragment.SignupTabFragment;
 import id.ac.polman.astra.kelompok2.financialrecords.utils.FirebaseAuthHelper;
@@ -43,6 +44,13 @@ public class HomeActivity extends AppCompatActivity {
     //SignUpModel signUpModel;
     private FirebaseAuth firebaseAuth;
     String nama, alamat;
+
+//    int totalpem;
+//    int totalpen;
+
+    public HomeActivity(){
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +65,6 @@ public class HomeActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new DashboardTabFragment()).commit();
-
     }
 
     @Override
@@ -84,17 +91,23 @@ public class HomeActivity extends AppCompatActivity {
 
                             nama = (String) document.get("nama");
                             alamat = (String) document.get("alamat");
-                            Log.e("CEKKKKKKKKKKKKK1", "nama: "+ nama +"jenis: "+alamat);
+
+//                            totalpem = (int) document.getLong("saldo").intValue();
+//                            totalpen = (int) document.getLong("saldo").intValue();
 
                         int id = item.getItemId();
                         if (id == R.id.profile_menu){
                             Fragment selectedFragment = null;
                             selectedFragment = new ProfileTabFragment(nama, alamat);
-                            Log.e("CEKKKKKKKKKKKKK2", "nama: "+ nama +"jenis: "+alamat);
                             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                     selectedFragment).commit();
-                            //ProfileTabFragment dialogForm = new ProfileTabFragment(signUpModel.getNama(), signUpModel.getAlamat());
+                        }
+                        else if(id == R.id.piechart_menu){
+                            Fragment selectedFragment = null;
 
+                            selectedFragment = new PiechartTabFragment();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                    selectedFragment).commit();
                         }
                         else if (id == R.id.logout_menu){
                             firebaseAuth = FirebaseAuth.getInstance();
