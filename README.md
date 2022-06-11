@@ -1,6 +1,6 @@
 # FinancialRecords
 
-<br><p align="center"><img src="https://imgur.com/TbsDrrr" width="400"></p><br>
+<br><p align="center"><img src="https://imgur.com/TbsDrrr.png" width="400"></p><br>
 
 ## Description ##
 Financial Records is a mobile application created using the Java Programming Languange with Android Studio as the tools. This application is useful for recording a list of expenses or income of a user. A user can log in to application and record their expenses, according to the category. For example, food/transportation for expenses and salary/business for income. Then the user can view the financial statements.
@@ -13,25 +13,25 @@ Financial Records is a mobile application created using the Java Programming Lan
 ![Landing Page](https://imgur.com/qS20GNv.png)
 
 ### Log In ###
-![Log In](https://imgur.com/qAcvHzJ)
+![Log In](https://imgur.com/qAcvHzJ.png)
 
 ### Sign Up ###
-![Sign Up](https://imgur.com/7migUIi)
+![Sign Up](https://imgur.com/7migUIi.png)
 
 ### Dashboard ###
-![Dashboard](https://imgur.com/PZ2lsZF)
+![Dashboard](https://imgur.com/PZ2lsZF.png)
 
 ### Account ###
-![Account](https://imgur.com/fFouW7X)
+![Account](https://imgur.com/fFouW7X.png)
 
 ### Master ###
-![Master](https://imgur.com/undefined)
+![Master](https://imgur.com/undefined.png)
 
 ### Transaction ###
-![Transaction](https://imgur.com/hklylpg)
+![Transaction](https://imgur.com/hklylpg.png)
 
 ### Report ###
-![Report](https://imgur.com/eJpONS7)
+![Report](https://imgur.com/eJpONS7.png)
 
 
 ## Copyright ##
