@@ -25,7 +25,7 @@ Financial Records is a mobile application created using the Java Programming Lan
 ![Account](https://imgur.com/fFouW7X.png)
 
 ### Master ###
-![Master](https://imgur.com/undefined.png)
+![Master](https://imgur.com/rkOgjn2.png)
 
 ### Transaction ###
 ![Transaction](https://imgur.com/hklylpg.png)
