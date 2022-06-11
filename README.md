@@ -10,7 +10,7 @@ Financial Records is a mobile application created using the Java Programming Lan
 
 ## Preview ##
 ### Landing Page ###
-![Landing Page](https://imgur.com/qS20GNv)
+![Landing Page](https://imgur.com/qS20GNv.png)
 
 ### Log In ###
 ![Log In](https://imgur.com/qAcvHzJ)
